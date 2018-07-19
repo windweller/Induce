@@ -42,11 +42,11 @@ class LSTM(nn.Module):
             lengths = lengths.view(-1).tolist()
             packed_emb = nn.utils.rnn.pack_padded_sequence(embed_input, lengths)
 
-        output, hidden = self.encoder(packed_emb)  # embed_input
+        output, (h_n, c_n) = self.encoder(packed_emb)  # embed_input
 
         if lengths is not None:
             output = unpack(output)[0]
-            hidden = unpack(hidden)[0]
+            hidden = unpack(h_n)[0]
 
         # we ignored negative masking
         return output, hidden
