@@ -66,6 +66,9 @@ class Dataset(object):
 
         return train_iter, val_iter, test_iter
 
+    def unpack_batch(self, b):
+        raise NotImplementedError
+
 
 class SSTDataset(Dataset):
     def __init__(self, train_subtrees=False):
@@ -75,3 +78,6 @@ class SSTDataset(Dataset):
                                                               train_subtrees=train_subtrees)
 
         super(SSTDataset, self).__init__()
+
+    def unpack_batch(self, b):
+        return b.text, b.label
