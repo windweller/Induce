@@ -10,9 +10,8 @@ import torch
 import torch.nn as nn
 from torch.nn.utils.rnn import pad_packed_sequence as unpack
 
-
 class LSTM(nn.Module):
-    def __init__(self, vocab, config):
+    def __init__(self, config, vocab=None):
         super(LSTM, self).__init__()
         self.config = config
         self.drop = nn.Dropout(config.dropout)  # embedding dropout
@@ -24,6 +23,7 @@ class LSTM(nn.Module):
             bidirectional=config.bidir)  # ha...not even bidirectional
         d_out = config.hidden_size if not config.bidir else config.hidden_size * 2
         self.out = nn.Linear(d_out, config.label_size)  # include bias, to prevent bias assignment
+
         self.embed = nn.Embedding(len(vocab), config.emb_dim)
         self.embed.weight.data.copy_(vocab.vectors)
         self.embed.weight.requires_grad = True if config.emb_update else False
