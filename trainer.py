@@ -26,6 +26,7 @@ class LSTMBaseConfig(Config):
     def __init__(self, emb_dim=100, hidden_size=512, depth=1, label_size=42, bidir=False,
                 dropout=0.2, emb_update=True, clip_grad=5., seed=1234,
                 rand_unk=True, run_name="default", emb_corpus="gigaword",
+                max_pool=False,
                  **kwargs):
         # run_name: the folder for the trainer
         super(LSTMBaseConfig, self).__init__(emb_dim=emb_dim,
@@ -40,4 +41,5 @@ class LSTMBaseConfig(Config):
                                              rand_unk=rand_unk,
                                              run_name=run_name,
                                              emb_corpus=emb_corpus,
+                                             max_pool=max_pool,
                                              **kwargs)

@@ -11,7 +11,7 @@ import torch.nn as nn
 from torch.nn.utils.rnn import pad_packed_sequence as unpack
 
 class LSTM(nn.Module):
-    def __init__(self, config, vocab=None):
+    def __init__(self, config, vocab):
         super(LSTM, self).__init__()
         self.config = config
         self.drop = nn.Dropout(config.dropout)  # embedding dropout
@@ -28,9 +28,11 @@ class LSTM(nn.Module):
         self.embed.weight.data.copy_(vocab.vectors)
         self.embed.weight.requires_grad = True if config.emb_update else False
 
+        self.max_pool = config.max_pool
+
     def forward(self, input, lengths=None):
-        output_vecs = self.get_vectors(input, lengths)
-        return self.get_logits(output_vecs)
+        output_vecs, hidden = self.get_vectors(input, lengths)
+        return self.get_logits(output_vecs, hidden)
 
     def get_vectors(self, input, lengths=None):
         embed_input = self.embed(input)
@@ -44,12 +46,17 @@ class LSTM(nn.Module):
 
         if lengths is not None:
             output = unpack(output)[0]
+            hidden = unpack(hidden)[0]
 
         # we ignored negative masking
-        return output
+        return output, hidden
 
-    def get_logits(self, output_vec):
-        output = torch.max(output_vec, 0)[0].squeeze(0)
+    def get_logits(self, output_vec, hidden):
+        if self.max_pool:
+            output = torch.max(output_vec, 0)[0].squeeze(0)
+        else:
+            output = hidden
+
         return self.out(output)
 
     def get_softmax_weight(self):
