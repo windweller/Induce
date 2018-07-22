@@ -12,23 +12,6 @@ https://arxiv.org/pdf/1802.07814.pdf
 from utils import dotdict, Config
 
 
-# we include TMPLA type normalization schemes into this configuration
-class GradientBaseConfig(Config):
-    def __init__(self, taylor=False,
-                 embedding_level=False,
-                 hidden_level=False,
-                 sn_config=ScoreNormConfig(),
-                 **kwargs):
-        # taylor: whether to use Taylor expansion or not
-        # sn_config: ScoreNormConfig
-        assert embedding_level or hidden_level, "can only choose either hidden level or embedding level"
-        super(GradientBaseConfig, self).__init__(taylor=taylor,
-                                                 embedding_level=embedding_level,
-                                                 hidden_level=hidden_level,
-                                                 sn_config=sn_config,
-                                                 **kwargs)
-
-
 # Check the TMPLA paper for reference
 # MultiLabel Normalization should work with any interpretation kernel
 # including additive decomposition, contextual decomposition, etc.
@@ -45,6 +28,23 @@ class ScoreNormConfig(Config):
                                               max_contrib=max_contrib,
                                               directional=directional,
                                               **kwargs)
+
+
+# we include TMPLA type normalization schemes into this configuration
+class GradientBaseConfig(Config):
+    def __init__(self, taylor=False,
+                 embedding_level=False,
+                 hidden_level=False,
+                 sn_config=ScoreNormConfig(),
+                 **kwargs):
+        # taylor: whether to use Taylor expansion or not
+        # sn_config: ScoreNormConfig
+        assert embedding_level or hidden_level, "can only choose either hidden level or embedding level"
+        super(GradientBaseConfig, self).__init__(taylor=taylor,
+                                                 embedding_level=embedding_level,
+                                                 hidden_level=hidden_level,
+                                                 sn_config=sn_config,
+                                                 **kwargs)
 
 
 class LSTMBaseConfig(Config):
