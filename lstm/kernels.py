@@ -33,8 +33,12 @@ class GradientKernel(object):
 
         # we compute gradients w.r.t. diff parameters
         if self.wrt_hidden:
-            grads = torch.autograd.grad(loss, hidden)
+            grads = torch.autograd.grad(loss, hidden)[0]
         elif self.wrt_emb:
-            grads = torch.autograd.grad(loss, self.model.embed.weight)
+            grads = torch.autograd.grad(loss, self.model.embed.weight)[0]
 
         # remember these grads have different shape
+
+class AttentionKernel(object):
+    def __init__(self, config, model, loss_fn):
+        print("Attention Kernel requires modification to the model")

@@ -81,3 +81,9 @@ class SSTDataset(Dataset):
 
     def unpack_batch(self, b):
         return b.text, b.label
+
+class CSUDataset(Dataset):
+    pass
+
+class PPDataset(Dataset):
+    pass

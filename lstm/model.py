@@ -14,6 +14,8 @@ class LSTM(nn.Module):
     def __init__(self, config, vocab):
         super(LSTM, self).__init__()
         self.config = config
+        assert config.attention or config.max_pool, "Can only choose attention or max pooling"
+
         self.drop = nn.Dropout(config.dropout)  # embedding dropout
         self.encoder = nn.LSTM(
             config.emb_dim,
