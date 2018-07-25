@@ -91,16 +91,17 @@ max_pool_lstm = LSTMBaseConfig(max_pool=True)
 # Typically Experiment manages trainers...
 # but in this case we don't have Experimenters...yet...
 class Trainer(object):
-    def __init__(self, classifier, dataset, config, device, save_path='./sandbox', load=False, run_order=0):
+    def __init__(self, classifier, dataset, config, device, model_name="model",
+                 save_path='./sandbox', load=False, run_order=0):
         # a trainer loads model, or trains model, it's a wrapper around it
         # save_path: where to save log and model
         # run_order: randomized runs, or prepping for ensemble
         if load:
             # or we can add a new keyword...
-            if os.path.exists(pjoin(save_path, 'model-{}.pickle'.format(run_order))):
-                self.classifier = torch.load(pjoin(save_path, 'model-{}.pickle'.format(run_order))).cuda(device)
+            if os.path.exists(pjoin(save_path, '{}-{}.pickle'.format(model_name, run_order))):
+                self.classifier = torch.load(pjoin(save_path, '{}-{}.pickle'.format(model_name, run_order))).cuda(device)
             else:
-                self.classifier = torch.load(pjoin(save_path, 'model.pickle')).cuda(device)
+                self.classifier = torch.load(pjoin(save_path, '{}.pickle'.format(model_name))).cuda(device)
         else:
             self.classifier = classifier.cuda(device)
 
@@ -125,7 +126,12 @@ class Trainer(object):
             os.makedirs(save_path)
         logging.basicConfig(format='[%(asctime)s] %(levelname)s: %(message)s',
                             datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
+
         file_handler = logging.FileHandler("{0}/log.txt".format(save_path))
+        formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(message)s',
+                                      datefmt='%m/%d/%Y %I:%M:%S %p')
+        file_handler.setFormatter(formatter)
+
         self.logger = logging.getLogger(save_path.split('/')[-1])  # so that no model is sharing logger
         self.logger.addHandler(file_handler)
 
@@ -207,6 +213,9 @@ class Trainer(object):
 
         preds = np.vstack(all_preds)
         ys = np.vstack(all_y_labels)
+
+        if not silent:
+            self.logger.info("\n" + metrics.classification_report(ys, preds, digits=3))  # write to file
 
         if return_instances:
             return ys, preds

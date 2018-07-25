@@ -34,8 +34,8 @@ class Dataset(object):
         self.is_vocab_bulit = False
         self.iterators = []
 
-        # self.TEXT, self.LABEL = None, None
-        # self.train, self.val, self.test = None, None, None
+        self.TEXT, self.LABEL = None, None
+        self.train, self.val, self.test = None, None, None
 
     def build_vocab(self, config, silent=False):
         if config.emb_corpus == 'common_crawl':
