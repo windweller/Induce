@@ -1,8 +1,17 @@
+import torch
+
+
+def one_hot_v2(batch, depth):
+    ones = torch.eye(depth)
+    return ones.index_select(0, batch)
+
+
 class dotdict(dict):
     """ dot.notation access to dictionary attributes """
     __getattr__ = dict.get
     __setattr__ = dict.__setitem__
     __delattr__ = dict.__delitem__
+
 
 class Config(dict):
     def __init__(self, **kwargs):

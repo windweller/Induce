@@ -72,18 +72,44 @@ class Dataset(object):
     def unpack_batch(self, b):
         raise NotImplementedError
 
+    def get_loss_fn(self):
+        # different dataset should have different loss
+        raise NotImplementedError
+
+    @property
+    def multilabel(self):
+        raise NotImplementedError
+
+    @property
+    def label_size(self):
+        raise NotImplementedError
+
 
 class SSTDataset(Dataset):
-    def __init__(self, train_subtrees=False):
-        self.TEXT = data.Field(sequential=True, include_lengths=True)
-        self.LABEL = data.Field(sequential=False)
+    def __init__(self, config, train_subtrees=False, fine_grained=False):
+        self.TEXT = data.Field(sequential=True, include_lengths=True, batch_first=config.batch_first)
+        self.LABEL = data.Field(sequential=False, batch_first=config.batch_first)
+        self.fine_grained= fine_grained
         self.train, self.val, self.test = datasets.SST.splits(self.TEXT, self.LABEL,
-                                                              train_subtrees=train_subtrees)
+                                                              train_subtrees=train_subtrees,
+                                                              fine_grained=fine_grained)
 
         super(SSTDataset, self).__init__()
 
     def unpack_batch(self, b):
         return b.text, b.label
+
+    def get_loss_fn(self, size_average=True, reduce=False):
+        return torch.nn.CrossEntropyLoss(size_average=size_average,
+                                         reduce=reduce)
+
+    @property
+    def multilabel(self):
+        return False
+
+    @property
+    def label_size(self):
+        return 3 if not self.fine_grained else 5
 
 class CSUDataset(Dataset):
     pass

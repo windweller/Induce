@@ -11,26 +11,31 @@ import torch.nn as nn
 from torch.nn.utils.rnn import pad_packed_sequence as unpack
 
 class LSTM(nn.Module):
-    def __init__(self, config, vocab):
+    def __init__(self, model_config, vocab):
         super(LSTM, self).__init__()
-        self.config = config
-        assert config.attention or config.max_pool, "Can only choose attention or max pooling"
+        self.config = model_config
+        self.attention = model_config.attention
+        self.max_pool = model_config.max_pool
+        self.batch_first = model_config.batch_first
 
-        self.drop = nn.Dropout(config.dropout)  # embedding dropout
+        assert self.attention or self.max_pool, "Can only choose attention or max pooling"
+
+        self.drop = nn.Dropout(model_config.dropout)  # embedding dropout
         self.encoder = nn.LSTM(
-            config.emb_dim,
-            config.hidden_size,
-            config.depth,
-            dropout=config.dropout,
-            bidirectional=config.bidir)  # ha...not even bidirectional
-        d_out = config.hidden_size if not config.bidir else config.hidden_size * 2
-        self.out = nn.Linear(d_out, config.label_size)  # include bias, to prevent bias assignment
+            model_config.emb_dim,
+            model_config.hidden_size,
+            model_config.depth,
+            dropout=model_config.dropout,
+            bidirectional=model_config.bidir,
+            batch_first=self.batch_first)  # ha...not even bidirectional
+        d_out = model_config.hidden_size if not model_config.bidir else model_config.hidden_size * 2
+        self.out = nn.Linear(d_out, model_config.label_size)  # include bias, to prevent bias assignment
 
-        self.embed = nn.Embedding(len(vocab), config.emb_dim)
+        self.embed = nn.Embedding(len(vocab), model_config.emb_dim)
         self.embed.weight.data.copy_(vocab.vectors)
-        self.embed.weight.requires_grad = True if config.emb_update else False
+        self.embed.weight.requires_grad = True if model_config.emb_update else False
 
-        self.max_pool = config.max_pool
+        self.trained = False
 
     def forward(self, input, lengths=None):
         output_vecs, hidden = self.get_vectors(input, lengths)
@@ -54,7 +59,8 @@ class LSTM(nn.Module):
 
     def get_logits(self, output_vec, hidden):
         if self.max_pool:
-            output = torch.max(output_vec, 0)[0].squeeze(0)
+            pool_dim = 1 if self.batch_first else 0
+            output = torch.max(output_vec, pool_dim)[0].squeeze(0)  # pool the temporal dim
         else:
             output = hidden
 

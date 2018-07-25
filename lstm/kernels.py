@@ -4,16 +4,17 @@ Interpretation kernels
 
 import torch
 
+
 class GradientKernel(object):
-    def __init__(self, config, model, loss_fn):
-        self.config = config
+    def __init__(self, kernel_config, model, loss_fn):
+        self.config = kernel_config
         self.model = model
         self.loss_fn = loss_fn  # we assume this to be cross entropy loss
 
-        self.wrt_emb = config.embedding_level
-        self.wrt_hidden = config.hidden_level
-        self.taylor = config.taylor
-        self.sn_config = config.sn_config
+        self.wrt_emb = kernel_config.embedding_level
+        self.wrt_hidden = kernel_config.hidden_level
+        self.taylor = kernel_config.taylor
+        self.sn_config = kernel_config.sn_config
 
         self.softmax = torch.nn.Softmax()
 
@@ -27,15 +28,18 @@ class GradientKernel(object):
 
         # 4 ways of normalization
         scores = None
-        if self.sn_config.local_norm:
+        if self.sn_config.local_norm:  # normalize within each time step (on d dimension)
             # most common setting (used also by Murdoch)
             pos_scores = torch.clamp(score_matrix, min=0.)
-            scores = pos_scores / pos_scores.sum(dim=0)
-        elif self.sn_config.global_norm:
+            scores = pos_scores / pos_scores.sum(dim=2, keepdim=True)
+        elif self.sn_config.global_norm:  # normalize importance w.r.t. a label (might not be very correct)
             pos_scores = torch.clamp(score_matrix, min=0.)
-            scores = pos_scores / pos_scores.sum(dim=1)
+            scores = pos_scores / pos_scores.sum(dim=1, keepdim=True)
         elif self.sn_config.directional:
-            scores = scores / torch.norm(scores, p=1, dim=1)
+            scores = scores / torch.norm(scores, p=1, dim=1, keepdim=True)
+            # this only makes sense w.r.t. a label (negative/positive contribution to a label)
+
+        scores[scores != scores] = 0.  # make 'nan' = 0.
 
         return scores
 
@@ -68,5 +72,6 @@ class GradientKernel(object):
 
 
 class AttentionKernel(object):
-    def __init__(self, config, model, loss_fn):
-        print("Attention Kernel requires modification to the model")
+    def __init__(self, model, loss_fn):
+        if not model.attention:
+            raise AttributeError("Attention Kernel requires modification to the model")
