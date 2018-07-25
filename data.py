@@ -87,14 +87,14 @@ class Dataset(object):
 
 class SSTDataset(Dataset):
     def __init__(self, config, train_subtrees=False, fine_grained=False):
+        super(SSTDataset, self).__init__()
+
         self.TEXT = data.Field(sequential=True, include_lengths=True, batch_first=config.batch_first)
         self.LABEL = data.Field(sequential=False, batch_first=config.batch_first)
         self.fine_grained= fine_grained
         self.train, self.val, self.test = datasets.SST.splits(self.TEXT, self.LABEL,
                                                               train_subtrees=train_subtrees,
                                                               fine_grained=fine_grained)
-
-        super(SSTDataset, self).__init__()
 
     def unpack_batch(self, b):
         return b.text, b.label
@@ -115,13 +115,12 @@ class SSTDataset(Dataset):
 # follow SentEval fashion...
 class SSTB_Dataset(Dataset):
     def __init__(self, config):
+        super(SSTB_Dataset, self).__init__()
+
         self.TEXT = data.Field(sequential=True, include_lengths=True, batch_first=config.batch_first)
         self.LABEL = data.Field(sequential=False, batch_first=config.batch_first)
 
         # TODO: need to add download link and such...
-
-        super(SSTB_Dataset, self).__init__()
-
 
 
 class CSUDataset(Dataset):
