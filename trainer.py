@@ -9,7 +9,7 @@ on Model Interpretation
 https://arxiv.org/pdf/1802.07814.pdf
 """
 
-from utils import dotdict, Config
+from utils import dotdict, Config, one_hot
 import torch
 import os
 from os.path import join as pjoin
@@ -175,7 +175,8 @@ class Trainer(object):
         if self.dataset.multilabel:
             preds = (torch.sigmoid(logits) > 0.5).data.cpu().numpy().astype(float)
         else:
-            preds =
+            preds = logits.data.max(1)[1]  # over label dim, and get indices
+            preds = one_hot(preds, self.dataset.label_size).cpu().numpy()
 
         return preds
 
@@ -198,7 +199,9 @@ class Trainer(object):
             (x, x_lengths), y = data.Text, data.Description
             logits = self.classifier(x, x_lengths)
 
-            preds = (torch.sigmoid(logits) > 0.5).data.cpu().numpy().astype(float)
+            # preds = (torch.sigmoid(logits) > 0.5).data.cpu().numpy().astype(float)
+            preds = self.logit_to_preds(logits)
+            
             all_preds.append(preds)
             all_y_labels.append(y.data.cpu().numpy())
 

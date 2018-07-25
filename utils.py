@@ -1,7 +1,7 @@
 import torch
 
 
-def one_hot_v2(batch, depth):
+def one_hot(batch, depth):
     ones = torch.eye(depth)
     return ones.index_select(0, batch)
 
