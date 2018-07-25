@@ -141,7 +141,7 @@ class Trainer(object):
             self.classifier.train()
             for iter, data in enumerate(self.train_iter):
                 self.classifier.zero_grad()
-                (x, x_lengths), y = data.Text, data.Description
+                (x, x_lengths), y = self.dataset.unpack_batch(data) # data.Text, data.Description
 
                 logits = self.classifier(x, x_lengths)
 
@@ -196,12 +196,12 @@ class Trainer(object):
 
         # will have a evaluation function inside the dataset!
         for iter, data in enumerate(data_iter):
-            (x, x_lengths), y = data.Text, data.Description
+            (x, x_lengths), y = self.dataset.unpack_batch(data) # data.Text, data.Description
             logits = self.classifier(x, x_lengths)
 
             # preds = (torch.sigmoid(logits) > 0.5).data.cpu().numpy().astype(float)
             preds = self.logit_to_preds(logits)
-            
+
             all_preds.append(preds)
             all_y_labels.append(y.data.cpu().numpy())
 

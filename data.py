@@ -111,6 +111,19 @@ class SSTDataset(Dataset):
     def label_size(self):
         return 3 if not self.fine_grained else 5
 
+
+# follow SentEval fashion...
+class SSTB_Dataset(Dataset):
+    def __init__(self, config):
+        self.TEXT = data.Field(sequential=True, include_lengths=True, batch_first=config.batch_first)
+        self.LABEL = data.Field(sequential=False, batch_first=config.batch_first)
+
+        # TODO: need to add download link and such...
+
+        super(SSTB_Dataset, self).__init__()
+
+
+
 class CSUDataset(Dataset):
     pass
 
