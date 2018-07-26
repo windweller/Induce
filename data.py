@@ -93,7 +93,7 @@ class Dataset(object):
         else:
             raise AssertionError("must choose between train, val, and test")
 
-    def get_batch(self, id, batch_size=1, device=-1,
+    def get_batch(self, id, batch_size=1, device=-1, get_raw=False,
                               train=False, val=True, test=False):
         # id, batch_size is starting from the id we count
 
@@ -102,7 +102,11 @@ class Dataset(object):
         minibatch.sort(key=dataset.sort_key, reverse=True)
         batch = Batch(minibatch, dataset, device, train=False)
 
-        return batch
+        if get_raw:
+            minibatch = [self.unpack_batch(d) for d in minibatch]
+            return batch, minibatch
+
+        return batch, None
 
     def get_random_batch(self, batch_size=1, device=-1,
                               train=False, val=True, test=False):
