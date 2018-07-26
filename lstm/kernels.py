@@ -1,5 +1,10 @@
 """
 Interpretation kernels
+
+GradientKernel:
+After computing a score for each label -- gradient kernel
+figures out how each parameter contributes to each label
+
 """
 
 import torch
@@ -75,3 +80,17 @@ class AttentionKernel(object):
     def __init__(self, model, loss_fn):
         if not model.attention:
             raise AttributeError("Attention Kernel requires modification to the model")
+
+
+class NeuralRationaleKernel(object):
+    def __init__(self, model, loss_fn):
+        pass
+
+
+class ConcreteRatinoaleKernel(object):
+    def __init__(self, model, loss_fn):
+        pass
+
+
+ReinforceKernel = NeuralRationaleKernel
+MutualInfoKernel = ConcreteRatinoaleKernel

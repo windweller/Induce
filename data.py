@@ -5,7 +5,8 @@ such as building up a vocabulary, randomly initialize embedding etc.
 
 import torch
 from torchtext import data, datasets
-
+import random
+from torchtext.data import Batch
 
 def init_emb(vocab, init="randn", num_special_toks=2, silent=False):
     # we can try randn or glorot
@@ -73,12 +74,41 @@ class Dataset(object):
         return train_iter, val_iter, test_iter
 
     def get_raw_example(self, id, train=False, val=True, test=False):
+        dataset = self.get_corpus(train, val, test)
+        return dataset.examples[id]
+
+    def get_random_raw_example(self, train=False, val=True, test=False):
+        dataset = self.get_corpus(train, val, test)
+        rand_id = random.randint(0, len(dataset.examples) - 1)
+
+        return self.get_raw_example(rand_id, train=train, val=val, test=test)
+
+    def get_corpus(self, train=False, val=True, test=False):
         if train:
-            return self.unpack_batch(self.train.examples[id])
+            return self.train
         elif val:
-            return self.unpack_batch(self.val.examples[id])
+            return self.val
         elif test:
-            return self.unpack_batch(self.test.examples[id])
+            return self.test
+        else:
+            raise AssertionError("must choose between train, val, and test")
+
+    def get_batch(self, id, batch_size=1, device=-1,
+                              train=False, val=True, test=False):
+        # id, batch_size is starting from the id we count
+
+        dataset = self.get_corpus(train, val, test)
+        minibatch = dataset.examples[id:id+batch_size]
+        minibatch.sort(key=dataset.sort_key, reverse=True)
+        batch = Batch(minibatch, dataset, device, train=False)
+
+        return batch
+
+    def get_random_batch(self, batch_size=1, device=-1,
+                              train=False, val=True, test=False):
+        dataset = self.get_corpus(train, val, test)
+        rand_id = random.randint(0, len(dataset.examples) - batch_size - 1)
+        self.get_batch(rand_id, batch_size, device, train, val, test)
 
     def unpack_batch(self, b):
         raise NotImplementedError
@@ -107,6 +137,7 @@ class SSTDataset(Dataset):
         self.train, self.val, self.test = datasets.SST.splits(self.TEXT, self.LABEL,
                                                               train_subtrees=train_subtrees,
                                                               fine_grained=fine_grained)
+
     def unpack_batch(self, b):
         return b.text, b.label
 
