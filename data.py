@@ -75,7 +75,7 @@ class Dataset(object):
 
     def get_raw_example(self, id, train=False, val=True, test=False):
         dataset = self.get_corpus(train, val, test)
-        return dataset.examples[id]
+        return self.unpack_batch(dataset.examples[id])
 
     def get_random_raw_example(self, train=False, val=True, test=False):
         dataset = self.get_corpus(train, val, test)
@@ -112,7 +112,7 @@ class Dataset(object):
                               train=False, val=True, test=False):
         dataset = self.get_corpus(train, val, test)
         rand_id = random.randint(0, len(dataset.examples) - batch_size - 1)
-        self.get_batch(rand_id, batch_size, device, train, val, test)
+        return self.get_batch(rand_id, batch_size, device, train, val, test)
 
     def unpack_batch(self, b):
         raise NotImplementedError
