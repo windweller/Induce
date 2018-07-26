@@ -54,11 +54,11 @@ class Dataset(object):
                 print("initializing random vocabulary")
             init_emb(self.vocab, silent=silent)
 
-    def get_iterators(self, device, train_batch_size=32, val_batch_size=128):
+    def get_iterators(self, device, train_batch_size=32, val_batch_size=128, regen=False):
         if not self.is_vocab_bulit:
             raise Exception("Vocabulary is not built yet, needs to call build_vocab()")
 
-        if len(self.iterators) > 0:
+        if len(self.iterators) > 0 and not regen:
             return self.iterators  # return stored iterator
 
         # only get them after knowing the device (inside trainer or evaluator)
@@ -67,7 +67,18 @@ class Dataset(object):
             batch_sizes=(train_batch_size, val_batch_size, val_batch_size), device=device,
             sort_within_batch=True, repeat=False)
 
+        # then we store these iterators
+        self.iterators = [train_iter, val_iter, test_iter]
+
         return train_iter, val_iter, test_iter
+
+    def get_raw_example(self, id, train=False, val=True, test=False):
+        if train:
+            return self.unpack_batch(self.train.examples[id])
+        elif val:
+            return self.unpack_batch(self.val.examples[id])
+        elif test:
+            return self.unpack_batch(self.test.examples[id])
 
     def unpack_batch(self, b):
         raise NotImplementedError
@@ -92,10 +103,10 @@ class SSTDataset(Dataset):
         self.TEXT = data.Field(sequential=True, include_lengths=True, batch_first=config.batch_first)
         self.LABEL = data.Field(sequential=False, batch_first=config.batch_first)
         self.fine_grained= fine_grained
+
         self.train, self.val, self.test = datasets.SST.splits(self.TEXT, self.LABEL,
                                                               train_subtrees=train_subtrees,
                                                               fine_grained=fine_grained)
-
     def unpack_batch(self, b):
         return b.text, b.label
 
