@@ -96,6 +96,7 @@ class Dataset(object):
     def get_batch(self, id, batch_size=1, device=-1, get_raw=False,
                               train=False, val=True, test=False):
         # id, batch_size is starting from the id we count
+        # returns: (((x, x_lengths), y), None)
 
         dataset = self.get_corpus(train, val, test)
         minibatch = dataset.examples[id:id+batch_size]
@@ -104,9 +105,9 @@ class Dataset(object):
 
         if get_raw:
             minibatch = [self.unpack_batch(d) for d in minibatch]
-            return batch, minibatch
+            return self.unpack_batch(batch), minibatch
 
-        return batch, None
+        return self.unpack_batch(batch), None
 
     def get_random_batch(self, batch_size=1, device=-1,
                               train=False, val=True, test=False):
