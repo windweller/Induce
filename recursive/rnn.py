@@ -37,6 +37,52 @@ l2 = 0.02
 average_over = 700
 train_size = 800
 
+class RNN_LSTM_Model(nn.Module):
+  def __init__(self, vocab, embed_size=100, label_size=2):
+    super(RNN_LSTM_Model, self).__init__()
+    self.embed_size = embed_size
+    self.label_size = label_size
+    self.vocab = vocab
+    self.embedding = nn.Embedding(int(self.vocab.total_words), self.embed_size)
+
+    self.lstm = nn.LSTM(self.embed_size, self.embed_size, 1)
+    self.projection = nn.Linear(self.embed_size, self.label_size , bias=True)
+
+    self.node_list = []
+    self.h = torch.zeros(1, 1, self.embed_size)
+    self.c = torch.zeros(1, 1, self.embed_size)
+
+  def init_variables(self):
+    print("total_words = ", self.vocab.total_words)
+
+  def walk_tree(self, in_node):
+    if in_node.isLeaf:
+      word_id = torch.LongTensor((self.vocab.encode(in_node.word), ))
+      current_node = self.embedding(Variable(word_id).cuda())
+      self.node_list.append(self.projection(current_node).unsqueeze(0))
+    else:
+      left  = self.walk_tree(in_node.left)
+      right = self.walk_tree(in_node.right)
+      x = torch.cat([left.unsqueeze(0), right.unsqueeze(0)], 0)
+      output, (self.h, self.c) = self.lstm(x, (self.h, self.c))
+      current_node = output[-1]  # we want time_len = -1
+      self.node_list.append(self.projection(current_node).unsqueeze(0))
+    return current_node
+
+  def forward(self, x):
+    """
+    Forward function accepts input data and returns a Variable of output data
+    """
+    ### init lstm
+    self.node_list = []
+    self.h = torch.zeros(1, 1, self.embed_size).cuda()
+    self.c = torch.zeros(1, 1, self.embed_size).cuda()
+  
+    root_node = self.walk_tree(x.root)
+    all_nodes = torch.cat(self.node_list)
+    #now I need to project out
+    return all_nodes
+
 
 class RNN_Model(nn.Module):
   def __init__(self, vocab, embed_size=100, label_size=2):
@@ -85,7 +131,7 @@ if __name__ == '__main__':
   vocab = Vocab()
   train_sents = [t.get_words() for t in train_data]
   vocab.construct(list(itertools.chain.from_iterable(train_sents)))
-  model   = RNN_Model(vocab, embed_size=50).cuda()
+  model   = RNN_LSTM_Model(vocab, embed_size=50).cuda()
   main()
 
   lr = 0.01
