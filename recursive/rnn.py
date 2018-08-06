@@ -3,7 +3,6 @@ import os
 import random
 
 import numpy as np
-import matplotlib.pyplot as plt
 import math
 import time
 import itertools
@@ -14,7 +13,7 @@ import torch.nn as nn
 from torch.autograd import Variable
 import torch.nn.functional as F
 
-from torch.nn.utils import clip_grad_norm
+from torch.nn.utils import clip_grad_norm_
 
 import tree as tr
 from utils import Vocab
@@ -58,7 +57,7 @@ class RNN_Model(nn.Module):
   def walk_tree(self, in_node):
     if in_node.isLeaf:
       word_id = torch.LongTensor((self.vocab.encode(in_node.word), ))
-      current_node = self.embedding(Variable(word_id))
+      current_node = self.embedding(Variable(word_id).cuda())
       self.node_list.append(self.projection(current_node).unsqueeze(0))
     else:
       left  = self.walk_tree(in_node.left)
@@ -86,7 +85,7 @@ if __name__ == '__main__':
   vocab = Vocab()
   train_sents = [t.get_words() for t in train_data]
   vocab.construct(list(itertools.chain.from_iterable(train_sents)))
-  model   = RNN_Model(vocab, embed_size=50)
+  model   = RNN_Model(vocab, embed_size=50).cuda()
   main()
 
   lr = 0.01
@@ -126,8 +125,8 @@ if __name__ == '__main__':
           labels.append(y)
           indices.append(x)
 
-      torch_labels = torch.LongTensor([l for l in labels if l != 2])
-      logits = all_nodes.index_select(dim=0, index=Variable(torch.LongTensor(indices)))
+      torch_labels = torch.LongTensor([l for l in labels if l != 2]).cuda()
+      logits = all_nodes.index_select(dim=0, index=Variable(torch.LongTensor(indices)).cuda())
       logits_squeezed = logits.squeeze(1)
       predictions = logits.max(dim=2)[1].squeeze()
 
@@ -137,21 +136,21 @@ if __name__ == '__main__':
       total_summed_accuracy += float(correct.sum()) / len(labels)
 
       objective_loss = F.cross_entropy(input=logits_squeezed, target=Variable(torch_labels))
-      if objective_loss.data[0] > 5 and epoch > 10:
+      if objective_loss.data.item() > 5 and epoch > 10:
         #interested in phrase that have large loss (i.e. incorrectly classified)
         print(' '.join(tree.get_words()))
 
-      loss_history.append(objective_loss.data[0])
+      loss_history.append(objective_loss.data.item())
       if step % 20 == 0 and step > 0:
-        print("step %3d, last loss %0.3f, mean loss (%d steps) %0.3f" % (step, objective_loss.data[0], average_over, np.mean(loss_history[-average_over:])))
+        print("step %3d, last loss %0.3f, mean loss (%d steps) %0.3f" % (step, objective_loss.data.item(), average_over, np.mean(loss_history[-average_over:])))
       optimizer.zero_grad()
 
-      if np.isnan(objective_loss.data[0]):
+      if np.isnan(objective_loss.data.item()):
         print("object_loss was not a number")
         sys.exit(1)
       else:
         objective_loss.backward()
-        clip_grad_norm(model.parameters(), 5, norm_type=2.)
+        clip_grad_norm_(model.parameters(), 5, norm_type=2.)
         #temp_grad += model.fcl._parameters['weight'].grad.data
         # # Update weights using gradient descent; w1.data and w2.data are Tensors,
         # # w1.grad and w2.grad are Variables and w1.grad.data and w2.grad.data are
@@ -175,8 +174,8 @@ if __name__ == '__main__':
         if y != 2:
           labels.append(y)
           indices.append(x)
-      torch_labels = torch.LongTensor([l for l in labels if l != 2])
-      logits = all_nodes.index_select(dim=0, index=Variable(torch.LongTensor(indices)))
+      torch_labels = torch.LongTensor([l for l in labels if l != 2]).cuda()
+      logits = all_nodes.index_select(dim=0, index=Variable(torch.LongTensor(indices)).cuda())
       logits_squeezed = logits.squeeze(1)
       predictions = logits.max(dim=2)[1].squeeze()
 
@@ -185,12 +184,9 @@ if __name__ == '__main__':
       dev_correct_at_root += float(correct[-1])
       dev_correct_all += float(correct.sum()) / len(labels)
       objective_loss = F.cross_entropy(input=logits_squeezed, target=Variable(torch_labels))
-      total_dev_loss += objective_loss.data[0]
+      total_dev_loss += objective_loss.data.item()
     print("total_dev_loss = ", total_dev_loss)
     print("correct (root) = ", dev_correct_at_root)
     print("correct (all)= ", dev_correct_all)
   # logits = logits.index_select(dim=0, index=Variable(torch.LongTensor(indices)))
-  plt.figure()
-  plt.plot(loss_history)
-  plt.show()
   print("DONE!")
