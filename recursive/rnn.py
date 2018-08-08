@@ -127,7 +127,10 @@ def main():
 
 
 if __name__ == '__main__':
-  train_data, dev_data, test_data = tr.simplified_data(train_size, 100, 200)
+  data = raw_input('Please input dataset: acd or raw\n')
+  print data
+  assert data == 'acd' or data == 'raw'
+  train_data, dev_data, test_data = tr.simplified_data(train_size, 100, 200, data)
   vocab = Vocab()
   train_sents = [t.get_words() for t in train_data]
   vocab.construct(list(itertools.chain.from_iterable(train_sents)))

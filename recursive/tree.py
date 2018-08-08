@@ -112,17 +112,30 @@ def loadTrees(dataSet='train'):
     """
     Loads training trees. Maps leaf node words to word ids.
     """
-    file = 'trees/%s.txt' % dataSet
+    file = 'trees/%s.filter.txt' % dataSet
     print("Loading %s trees.." % dataSet)
     with open(file, 'r') as fid:
         trees = [Tree(l) for l in fid.readlines()]
 
     return trees
 
-def simplified_data(num_train, num_dev, num_test):
+def loadACDTrees(dataSet='train'):
+    """
+    Loads training trees. Maps leaf node words to word ids.
+    """
+    file = 'acd_trees/%s.normlabel.txt' % dataSet
+    print("Loading %s trees.." % dataSet)
+    with open(file, 'r') as fid:
+        trees = [Tree(l) for l in fid.readlines()]
+    return trees
+
+def simplified_data(num_train, num_dev, num_test, data='acd'):
     rndstate = random.getstate()
     random.seed(0)
-    trees = loadTrees('train') + loadTrees('dev') + loadTrees('test')
+    if data == 'acd':
+        trees = loadACDTrees('train') + loadACDTrees('dev') + loadACDTrees('test')
+    else:
+        trees = loadTrees('train') + loadTrees('dev') + loadTrees('test')
     
     #filter extreme trees
     pos_trees = [t for t in trees if t.root.label==4]
