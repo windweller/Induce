@@ -130,8 +130,6 @@ def loadACDTrees(dataSet='train'):
     return trees
 
 def simplified_data(num_train, num_dev, num_test, data='acd'):
-    rndstate = random.getstate()
-    random.seed(0)
     if data == 'acd':
         train, dev, test = loadACDTrees('train'), loadACDTrees('dev'), loadACDTrees('test')
     else:
@@ -144,9 +142,6 @@ def simplified_data(num_train, num_dev, num_test, data='acd'):
     binarize_labels(train)
     binarize_labels(dev)
     binarize_labels(test)
-
-    random.shuffle(train)
-    random.setstate(rndstate)
 
     return train, dev, test
 

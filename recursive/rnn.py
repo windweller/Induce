@@ -1,41 +1,27 @@
 import sys
 import os
 import random
-
 import numpy as np
 import math
 import time
 import itertools
 import shutil
-
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
 import torch.nn.functional as F
-
 from torch.nn.utils import clip_grad_norm_
-
 import tree as tr
 from utils import Vocab
-
 from collections import OrderedDict
-
-import seaborn as sns
-
 from random import shuffle
 
-sns.set_style('whitegrid')
 
 embed_size = 100
-label_size = 2
-early_stopping = 2
-anneal_threshold = 0.99
-anneal_by = 1.5
 max_epochs = 30
 lr = 0.01
 l2 = 0.02
 average_over = 700
-train_size = 800
 
 class RNN_LSTM_Model(nn.Module):
   def __init__(self, vocab, embed_size=100, label_size=2):
@@ -122,9 +108,6 @@ class RNN_Model(nn.Module):
     #now I need to project out
     return all_nodes
 
-def main():
-  print("do nothing")
-
 
 if __name__ == '__main__':
   data = raw_input('Please input dataset: acd or raw\n')
@@ -136,19 +119,10 @@ if __name__ == '__main__':
   vocab = Vocab()
   train_sents = [t.get_words() for t in train_data]
   vocab.construct(list(itertools.chain.from_iterable(train_sents)))
-  model   = RNN_LSTM_Model(vocab, embed_size=50).cuda()
-  main()
+  model = RNN_LSTM_Model(vocab, embed_size=embed_size).cuda()
 
-  lr = 0.01
   loss_history = []
   optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9, dampening=0.0)
-  # params (iterable): iterable of parameters to optimize or dicts defining
-  #     parameter groups
-  # lr (float): learning rate
-  # momentum (float, optional): momentum factor (default: 0)
-  # weight_decay (float, optional): weight decay (L2 penalty) (default: 0)
-  #torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9, dampening=0, weight_decay=0)
-  # print(model.fcl._parameters['weight'])
 
   for epoch in range(max_epochs):
     print("epoch = ", epoch)
@@ -161,17 +135,11 @@ if __name__ == '__main__':
           print("Droping learning from %f to %f"%(param_group['lr'], 0.5 * param_group['lr']))
           param_group['lr'] = 0.5 * param_group['lr']
     for step, tree in enumerate(train_data):
-        # if step == 0:
-        #   optimizer.zero_grad()
-        # objective_loss.backward()
-        # if step == len(train_data) - 1:
-        #   optimizer.step()
-
       all_nodes = model(tree)
 
       labels  = []
       indices = []
-      for x,y in enumerate(tree.labels):
+      for x, y in enumerate(tree.labels):
         if y != 2:
           labels.append(y)
           indices.append(x)
@@ -202,16 +170,9 @@ if __name__ == '__main__':
       else:
         objective_loss.backward()
         clip_grad_norm_(model.parameters(), 5, norm_type=2.)
-        #temp_grad += model.fcl._parameters['weight'].grad.data
-        # # Update weights using gradient descent; w1.data and w2.data are Tensors,
-        # # w1.grad and w2.grad are Variables and w1.grad.data and w2.grad.data are
-        # # Tensors.
-        # loss.backward()
-        # w1.data -= learning_rate * w1.grad.data
-        # w2.data -= learning_rate * w2.grad.data
         optimizer.step()
-    print("total root predicted correctly = ", total_root_prediction/ float(train_size))
-    print("total node (including root) predicted correctly = ", total_summed_accuracy / float(train_size))
+    print("total root predicted correctly = ", total_root_prediction / float(len(train_data)))
+    print("total node (including root) predicted correctly = ", total_summed_accuracy / float(len(train_data)))
 
     total_dev_loss = 0.
     dev_correct_at_root = 0.
@@ -221,7 +182,7 @@ if __name__ == '__main__':
 
       labels  = []
       indices = []
-      for x,y in enumerate(dev_example.labels):
+      for x, y in enumerate(dev_example.labels):
         if y != 2:
           labels.append(y)
           indices.append(x)
@@ -236,9 +197,9 @@ if __name__ == '__main__':
       dev_correct_all += float(correct.sum()) / len(labels)
       objective_loss = F.cross_entropy(input=logits_squeezed, target=Variable(torch_labels))
       total_dev_loss += objective_loss.data.item()
-    print("total_dev_loss = ", total_dev_loss)
-    print("correct (root) = ", dev_correct_at_root)
-    print("correct (all)= ", dev_correct_all)
+    print("total_dev_loss = ", total_dev_loss / float(len(dev_data)))
+    print("correct (root) = ", dev_correct_at_root / float(len(dev_data)))
+    print("correct (all)= ", dev_correct_all / float(len(dev_data)))
 
     total_test_loss = 0.
     test_correct_at_root = 0.
@@ -263,8 +224,7 @@ if __name__ == '__main__':
       test_correct_all += float(correct.sum()) / len(labels)
       objective_loss = F.cross_entropy(input=logits_squeezed, target=Variable(torch_labels))
       total_test_loss += objective_loss.data.item()
-    print("total_test_loss = ", total_test_loss)
-    print("correct (root) = ", test_correct_at_root)
-    print("correct (all)= ", test_correct_all)
-  # logits = logits.index_select(dim=0, index=Variable(torch.LongTensor(indices)))
+    print("total_test_loss = ", total_test_loss / float(len(test_data)))
+    print("correct (root) = ", test_correct_at_root / float(len(test_data)))
+    print("correct (all)= ", test_correct_all / float(len(test_data)))
   print("DONE!")
