@@ -133,42 +133,29 @@ def simplified_data(num_train, num_dev, num_test, data='acd'):
     rndstate = random.getstate()
     random.seed(0)
     if data == 'acd':
-        trees = loadACDTrees('train') + loadACDTrees('dev') + loadACDTrees('test')
+        train, dev, test = loadACDTrees('train'), loadACDTrees('dev'), loadACDTrees('test')
     else:
-        trees = loadTrees('train') + loadTrees('dev') + loadTrees('test')
-    
-    #filter extreme trees
-    pos_trees = [t for t in trees if t.root.label==4]
-    neg_trees = [t for t in trees if t.root.label==0]
+        train, dev, test = loadTrees('train'), loadTrees('dev'), loadTrees('test')
 
-    #binarize labels
-    binarize_labels(pos_trees)
-    binarize_labels(neg_trees)
-    
-    #split into train, dev, test
-    print(len(pos_trees), len(neg_trees))
-    pos_trees = sorted(pos_trees, key=lambda t: len(t.get_words()))
-    neg_trees = sorted(neg_trees, key=lambda t: len(t.get_words()))
-    num_train = num_train // 2
-    num_dev = num_dev // 2
-    num_test = num_test // 2
-    train = pos_trees[:num_train] + neg_trees[:num_train]
-    dev = pos_trees[num_train : num_train+num_dev] + neg_trees[num_train : num_train+num_dev]
-    test = pos_trees[num_train+num_dev : num_train+num_dev+num_test] + neg_trees[num_train+num_dev : num_train+num_dev+num_test]
+    #filter extreme trees, binarize labels
+    train = [t for t in train if t.root.label != 2]
+    dev = [t for t in dev if t.root.label != 2]
+    test = [t for t in test if t.root.label != 2]
+    binarize_labels(train)
+    binarize_labels(dev)
+    binarize_labels(test)
+
     random.shuffle(train)
-    random.shuffle(dev)
-    random.shuffle(test)
     random.setstate(rndstate)
-
 
     return train, dev, test
 
 
 def binarize_labels(trees):
     def binarize_node(node, _):
-        if node.label<2:
+        if node.label < 2:
             node.label = 0
-        elif node.label>2:
+        elif node.label > 2:
             node.label = 1
     for tree in trees:
         leftTraverse(tree.root, binarize_node, None)

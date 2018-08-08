@@ -679,3 +679,683 @@ step 760, last loss 0.046, mean loss (700 steps) 0.137
 step 780, last loss 0.002, mean loss (700 steps) 0.138
 ('total root predicted correctly = ', 0.99625)
 ('total node (including root) predicted correctly = ', 0.9536102300477305)
+('total_dev_loss = ', 145.44294842053205)
+('correct (root) = ', 64.0)
+('correct (all)= ', 67.00519203019202)
+('epoch = ', 15)
+step  20, last loss 0.142, mean loss (700 steps) 0.138
+step  40, last loss 0.004, mean loss (700 steps) 0.140
+step  60, last loss 0.021, mean loss (700 steps) 0.136
+step  80, last loss 0.000, mean loss (700 steps) 0.132
+step 100, last loss 0.007, mean loss (700 steps) 0.129
+step 120, last loss 0.019, mean loss (700 steps) 0.130
+step 140, last loss 0.041, mean loss (700 steps) 0.131
+step 160, last loss 0.000, mean loss (700 steps) 0.131
+step 180, last loss 0.016, mean loss (700 steps) 0.131
+step 200, last loss 0.099, mean loss (700 steps) 0.130
+step 220, last loss 0.004, mean loss (700 steps) 0.132
+step 240, last loss 0.025, mean loss (700 steps) 0.129
+step 260, last loss 0.036, mean loss (700 steps) 0.126
+step 280, last loss 0.014, mean loss (700 steps) 0.127
+step 300, last loss 0.033, mean loss (700 steps) 0.126
+step 320, last loss 0.016, mean loss (700 steps) 0.128
+step 340, last loss 0.072, mean loss (700 steps) 0.124
+step 360, last loss 0.119, mean loss (700 steps) 0.123
+step 380, last loss 0.005, mean loss (700 steps) 0.127
+step 400, last loss 0.030, mean loss (700 steps) 0.124
+step 420, last loss 0.048, mean loss (700 steps) 0.125
+step 440, last loss 0.083, mean loss (700 steps) 0.127
+step 460, last loss 0.014, mean loss (700 steps) 0.127
+step 480, last loss 0.150, mean loss (700 steps) 0.128
+step 500, last loss 0.206, mean loss (700 steps) 0.127
+step 520, last loss 0.143, mean loss (700 steps) 0.129
+step 540, last loss 0.009, mean loss (700 steps) 0.127
+step 560, last loss 0.347, mean loss (700 steps) 0.127
+step 580, last loss 0.457, mean loss (700 steps) 0.126
+step 600, last loss 0.318, mean loss (700 steps) 0.122
+step 620, last loss 0.153, mean loss (700 steps) 0.125
+step 640, last loss 0.408, mean loss (700 steps) 0.127
+step 660, last loss 0.001, mean loss (700 steps) 0.124
+step 680, last loss 0.119, mean loss (700 steps) 0.127
+step 700, last loss 0.023, mean loss (700 steps) 0.127
+step 720, last loss 0.049, mean loss (700 steps) 0.126
+step 740, last loss 0.038, mean loss (700 steps) 0.127
+step 760, last loss 0.015, mean loss (700 steps) 0.127
+step 780, last loss 0.009, mean loss (700 steps) 0.129
+('total root predicted correctly = ', 1.0)
+('total node (including root) predicted correctly = ', 0.9578636710511711)
+('total_dev_loss = ', 125.00413333787583)
+('correct (root) = ', 67.0)
+('correct (all)= ', 70.19088134088136)
+('epoch = ', 16)
+step  20, last loss 0.186, mean loss (700 steps) 0.131
+step  40, last loss 0.009, mean loss (700 steps) 0.130
+step  60, last loss 0.073, mean loss (700 steps) 0.132
+step  80, last loss 0.059, mean loss (700 steps) 0.131
+step 100, last loss 0.036, mean loss (700 steps) 0.134
+step 120, last loss 0.127, mean loss (700 steps) 0.133
+step 140, last loss 0.023, mean loss (700 steps) 0.135
+step 160, last loss 0.026, mean loss (700 steps) 0.135
+step 180, last loss 0.114, mean loss (700 steps) 0.135
+step 200, last loss 0.039, mean loss (700 steps) 0.136
+step 220, last loss 0.366, mean loss (700 steps) 0.135
+step 240, last loss 0.105, mean loss (700 steps) 0.132
+step 260, last loss 0.166, mean loss (700 steps) 0.131
+step 280, last loss 1.086, mean loss (700 steps) 0.130
+step 300, last loss 0.017, mean loss (700 steps) 0.131
+step 320, last loss 0.030, mean loss (700 steps) 0.130
+step 340, last loss 0.036, mean loss (700 steps) 0.130
+step 360, last loss 0.069, mean loss (700 steps) 0.129
+step 380, last loss 0.012, mean loss (700 steps) 0.126
+step 400, last loss 0.210, mean loss (700 steps) 0.127
+step 420, last loss 0.064, mean loss (700 steps) 0.123
+step 440, last loss 0.093, mean loss (700 steps) 0.122
+step 460, last loss 0.079, mean loss (700 steps) 0.122
+step 480, last loss 0.236, mean loss (700 steps) 0.121
+step 500, last loss 0.020, mean loss (700 steps) 0.123
+step 520, last loss 0.232, mean loss (700 steps) 0.122
+step 540, last loss 0.052, mean loss (700 steps) 0.122
+step 560, last loss 0.353, mean loss (700 steps) 0.125
+step 580, last loss 0.024, mean loss (700 steps) 0.125
+step 600, last loss 0.021, mean loss (700 steps) 0.124
+step 620, last loss 0.051, mean loss (700 steps) 0.122
+step 640, last loss 0.130, mean loss (700 steps) 0.122
+step 660, last loss 0.009, mean loss (700 steps) 0.122
+step 680, last loss 0.257, mean loss (700 steps) 0.123
+step 700, last loss 0.284, mean loss (700 steps) 0.121
+step 720, last loss 0.995, mean loss (700 steps) 0.124
+step 740, last loss 0.382, mean loss (700 steps) 0.125
+step 760, last loss 0.003, mean loss (700 steps) 0.124
+step 780, last loss 0.050, mean loss (700 steps) 0.125
+('total root predicted correctly = ', 0.99375)
+('total node (including root) predicted correctly = ', 0.9584232711732706)
+('total_dev_loss = ', 137.78703676047735)
+('correct (root) = ', 67.0)
+('correct (all)= ', 69.62494727494725)
+('epoch = ', 17)
+step  20, last loss 0.017, mean loss (700 steps) 0.123
+step  40, last loss 0.178, mean loss (700 steps) 0.120
+step  60, last loss 0.003, mean loss (700 steps) 0.124
+step  80, last loss 0.017, mean loss (700 steps) 0.124
+step 100, last loss 0.013, mean loss (700 steps) 0.122
+step 120, last loss 0.048, mean loss (700 steps) 0.121
+step 140, last loss 0.030, mean loss (700 steps) 0.124
+step 160, last loss 0.046, mean loss (700 steps) 0.125
+step 180, last loss 0.059, mean loss (700 steps) 0.123
+step 200, last loss 0.008, mean loss (700 steps) 0.122
+step 220, last loss 0.026, mean loss (700 steps) 0.121
+step 240, last loss 0.013, mean loss (700 steps) 0.121
+step 260, last loss 0.008, mean loss (700 steps) 0.121
+step 280, last loss 0.005, mean loss (700 steps) 0.121
+step 300, last loss 0.122, mean loss (700 steps) 0.121
+step 320, last loss 0.017, mean loss (700 steps) 0.121
+step 340, last loss 0.024, mean loss (700 steps) 0.123
+step 360, last loss 0.000, mean loss (700 steps) 0.121
+step 380, last loss 0.042, mean loss (700 steps) 0.123
+step 400, last loss 0.104, mean loss (700 steps) 0.120
+step 420, last loss 0.020, mean loss (700 steps) 0.119
+step 440, last loss 0.046, mean loss (700 steps) 0.118
+step 460, last loss 0.055, mean loss (700 steps) 0.116
+step 480, last loss 0.965, mean loss (700 steps) 0.117
+step 500, last loss 0.041, mean loss (700 steps) 0.118
+step 520, last loss 0.119, mean loss (700 steps) 0.120
+step 540, last loss 0.227, mean loss (700 steps) 0.119
+step 560, last loss 0.003, mean loss (700 steps) 0.122
+step 580, last loss 0.004, mean loss (700 steps) 0.120
+step 600, last loss 0.012, mean loss (700 steps) 0.121
+step 620, last loss 0.210, mean loss (700 steps) 0.116
+step 640, last loss 0.075, mean loss (700 steps) 0.117
+step 660, last loss 0.107, mean loss (700 steps) 0.119
+step 680, last loss 0.378, mean loss (700 steps) 0.121
+step 700, last loss 0.008, mean loss (700 steps) 0.120
+step 720, last loss 0.005, mean loss (700 steps) 0.120
+step 740, last loss 0.182, mean loss (700 steps) 0.123
+step 760, last loss 0.160, mean loss (700 steps) 0.120
+step 780, last loss 0.160, mean loss (700 steps) 0.120
+('total root predicted correctly = ', 0.99625)
+('total node (including root) predicted correctly = ', 0.9605522845210349)
+('total_dev_loss = ', 145.96710404439364)
+('correct (root) = ', 64.0)
+('correct (all)= ', 68.74345376845375)
+('epoch = ', 18)
+step  20, last loss 0.031, mean loss (700 steps) 0.123
+step  40, last loss 0.046, mean loss (700 steps) 0.123
+step  60, last loss 0.481, mean loss (700 steps) 0.124
+step  80, last loss 0.012, mean loss (700 steps) 0.123
+step 100, last loss 0.045, mean loss (700 steps) 0.123
+step 120, last loss 0.002, mean loss (700 steps) 0.124
+step 140, last loss 0.071, mean loss (700 steps) 0.124
+step 160, last loss 0.527, mean loss (700 steps) 0.126
+step 180, last loss 0.100, mean loss (700 steps) 0.128
+step 200, last loss 0.023, mean loss (700 steps) 0.126
+step 220, last loss 0.033, mean loss (700 steps) 0.127
+step 240, last loss 0.017, mean loss (700 steps) 0.129
+step 260, last loss 0.003, mean loss (700 steps) 0.129
+step 280, last loss 0.017, mean loss (700 steps) 0.128
+step 300, last loss 0.036, mean loss (700 steps) 0.129
+step 320, last loss 0.058, mean loss (700 steps) 0.128
+step 340, last loss 0.020, mean loss (700 steps) 0.127
+step 360, last loss 0.002, mean loss (700 steps) 0.127
+step 380, last loss 0.478, mean loss (700 steps) 0.123
+step 400, last loss 0.024, mean loss (700 steps) 0.124
+step 420, last loss 1.078, mean loss (700 steps) 0.126
+step 440, last loss 0.316, mean loss (700 steps) 0.124
+step 460, last loss 0.232, mean loss (700 steps) 0.122
+step 480, last loss 0.004, mean loss (700 steps) 0.122
+step 500, last loss 0.001, mean loss (700 steps) 0.122
+step 520, last loss 0.454, mean loss (700 steps) 0.122
+step 540, last loss 0.021, mean loss (700 steps) 0.125
+step 560, last loss 0.014, mean loss (700 steps) 0.123
+step 580, last loss 0.013, mean loss (700 steps) 0.119
+step 600, last loss 0.058, mean loss (700 steps) 0.120
+step 620, last loss 0.009, mean loss (700 steps) 0.119
+step 640, last loss 0.000, mean loss (700 steps) 0.118
+step 660, last loss 0.009, mean loss (700 steps) 0.118
+step 680, last loss 0.011, mean loss (700 steps) 0.117
+step 700, last loss 0.018, mean loss (700 steps) 0.115
+step 720, last loss 0.369, mean loss (700 steps) 0.114
+step 740, last loss 0.131, mean loss (700 steps) 0.115
+step 760, last loss 0.002, mean loss (700 steps) 0.114
+step 780, last loss 0.018, mean loss (700 steps) 0.115
+('total root predicted correctly = ', 0.99875)
+('total node (including root) predicted correctly = ', 0.9635313610001109)
+('total_dev_loss = ', 146.5902753204573)
+('correct (root) = ', 65.0)
+('correct (all)= ', 69.0160728160728)
+('epoch = ', 19)
+step  20, last loss 0.190, mean loss (700 steps) 0.114
+step  40, last loss 0.012, mean loss (700 steps) 0.113
+step  60, last loss 0.302, mean loss (700 steps) 0.113
+step  80, last loss 0.093, mean loss (700 steps) 0.111
+step 100, last loss 0.034, mean loss (700 steps) 0.111
+step 120, last loss 0.045, mean loss (700 steps) 0.111
+step 140, last loss 0.380, mean loss (700 steps) 0.108
+step 160, last loss 0.927, mean loss (700 steps) 0.112
+step 180, last loss 0.036, mean loss (700 steps) 0.111
+step 200, last loss 0.030, mean loss (700 steps) 0.109
+step 220, last loss 0.107, mean loss (700 steps) 0.110
+step 240, last loss 0.004, mean loss (700 steps) 0.110
+step 260, last loss 0.000, mean loss (700 steps) 0.110
+step 280, last loss 0.114, mean loss (700 steps) 0.110
+step 300, last loss 0.003, mean loss (700 steps) 0.109
+step 320, last loss 0.044, mean loss (700 steps) 0.107
+step 340, last loss 0.023, mean loss (700 steps) 0.107
+step 360, last loss 0.155, mean loss (700 steps) 0.105
+step 380, last loss 0.131, mean loss (700 steps) 0.105
+step 400, last loss 0.084, mean loss (700 steps) 0.103
+step 420, last loss 0.004, mean loss (700 steps) 0.104
+step 440, last loss 0.177, mean loss (700 steps) 0.101
+step 460, last loss 0.005, mean loss (700 steps) 0.098
+step 480, last loss 0.013, mean loss (700 steps) 0.098
+step 500, last loss 0.030, mean loss (700 steps) 0.097
+step 520, last loss 1.164, mean loss (700 steps) 0.099
+step 540, last loss 0.023, mean loss (700 steps) 0.098
+step 560, last loss 0.002, mean loss (700 steps) 0.099
+step 580, last loss 0.979, mean loss (700 steps) 0.099
+step 600, last loss 0.004, mean loss (700 steps) 0.103
+step 620, last loss 0.054, mean loss (700 steps) 0.104
+step 640, last loss 0.523, mean loss (700 steps) 0.104
+step 660, last loss 0.920, mean loss (700 steps) 0.105
+step 680, last loss 0.008, mean loss (700 steps) 0.105
+step 700, last loss 0.013, mean loss (700 steps) 0.105
+step 720, last loss 0.406, mean loss (700 steps) 0.103
+step 740, last loss 0.034, mean loss (700 steps) 0.107
+step 760, last loss 0.114, mean loss (700 steps) 0.107
+step 780, last loss 0.024, mean loss (700 steps) 0.108
+('total root predicted correctly = ', 1.0)
+('total node (including root) predicted correctly = ', 0.9659060453435458)
+('total_dev_loss = ', 128.88811083731707)
+('correct (root) = ', 66.0)
+('correct (all)= ', 70.08071928071928)
+('epoch = ', 20)
+Droping learning from 0.005000 to 0.002500
+step  20, last loss 0.033, mean loss (700 steps) 0.109
+step  40, last loss 0.002, mean loss (700 steps) 0.111
+step  60, last loss 0.663, mean loss (700 steps) 0.109
+step  80, last loss 0.031, mean loss (700 steps) 0.110
+step 100, last loss 0.149, mean loss (700 steps) 0.109
+step 120, last loss 0.039, mean loss (700 steps) 0.109
+step 140, last loss 0.133, mean loss (700 steps) 0.108
+step 160, last loss 0.013, mean loss (700 steps) 0.107
+step 180, last loss 0.041, mean loss (700 steps) 0.106
+step 200, last loss 0.002, mean loss (700 steps) 0.106
+step 220, last loss 0.211, mean loss (700 steps) 0.105
+step 240, last loss 0.077, mean loss (700 steps) 0.103
+step 260, last loss 0.019, mean loss (700 steps) 0.104
+step 280, last loss 0.028, mean loss (700 steps) 0.104
+step 300, last loss 0.025, mean loss (700 steps) 0.103
+step 320, last loss 0.224, mean loss (700 steps) 0.101
+step 340, last loss 0.004, mean loss (700 steps) 0.104
+step 360, last loss 0.012, mean loss (700 steps) 0.105
+step 380, last loss 0.280, mean loss (700 steps) 0.107
+step 400, last loss 0.021, mean loss (700 steps) 0.105
+step 420, last loss 0.030, mean loss (700 steps) 0.105
+step 440, last loss 0.002, mean loss (700 steps) 0.106
+step 460, last loss 0.016, mean loss (700 steps) 0.107
+step 480, last loss 0.225, mean loss (700 steps) 0.108
+step 500, last loss 0.695, mean loss (700 steps) 0.105
+step 520, last loss 0.003, mean loss (700 steps) 0.104
+step 540, last loss 0.323, mean loss (700 steps) 0.104
+step 560, last loss 0.052, mean loss (700 steps) 0.102
+step 580, last loss 0.915, mean loss (700 steps) 0.102
+step 600, last loss 0.047, mean loss (700 steps) 0.101
+step 620, last loss 0.015, mean loss (700 steps) 0.100
+step 640, last loss 0.023, mean loss (700 steps) 0.099
+step 660, last loss 0.001, mean loss (700 steps) 0.095
+step 680, last loss 0.007, mean loss (700 steps) 0.099
+step 700, last loss 0.014, mean loss (700 steps) 0.097
+step 720, last loss 0.022, mean loss (700 steps) 0.098
+step 740, last loss 0.011, mean loss (700 steps) 0.097
+step 760, last loss 0.007, mean loss (700 steps) 0.096
+step 780, last loss 0.019, mean loss (700 steps) 0.097
+('total root predicted correctly = ', 0.9975)
+('total node (including root) predicted correctly = ', 0.9665355998168502)
+('total_dev_loss = ', 147.94778030202724)
+('correct (root) = ', 67.0)
+('correct (all)= ', 69.82871017871017)
+('epoch = ', 21)
+step  20, last loss 0.260, mean loss (700 steps) 0.099
+step  40, last loss 0.088, mean loss (700 steps) 0.100
+step  60, last loss 0.039, mean loss (700 steps) 0.102
+step  80, last loss 0.007, mean loss (700 steps) 0.101
+step 100, last loss 0.004, mean loss (700 steps) 0.103
+step 120, last loss 0.025, mean loss (700 steps) 0.104
+step 140, last loss 0.001, mean loss (700 steps) 0.104
+step 160, last loss 0.273, mean loss (700 steps) 0.104
+step 180, last loss 0.282, mean loss (700 steps) 0.106
+step 200, last loss 0.207, mean loss (700 steps) 0.108
+step 220, last loss 0.010, mean loss (700 steps) 0.109
+step 240, last loss 0.009, mean loss (700 steps) 0.106
+step 260, last loss 0.000, mean loss (700 steps) 0.105
+step 280, last loss 0.014, mean loss (700 steps) 0.103
+step 300, last loss 0.016, mean loss (700 steps) 0.104
+step 320, last loss 0.018, mean loss (700 steps) 0.102
+step 340, last loss 0.221, mean loss (700 steps) 0.103
+step 360, last loss 0.001, mean loss (700 steps) 0.103
+step 380, last loss 0.030, mean loss (700 steps) 0.101
+step 400, last loss 0.010, mean loss (700 steps) 0.100
+step 420, last loss 0.186, mean loss (700 steps) 0.103
+step 440, last loss 0.003, mean loss (700 steps) 0.101
+step 460, last loss 0.000, mean loss (700 steps) 0.101
+step 480, last loss 0.190, mean loss (700 steps) 0.101
+step 500, last loss 0.017, mean loss (700 steps) 0.102
+step 520, last loss 0.182, mean loss (700 steps) 0.105
+step 540, last loss 0.092, mean loss (700 steps) 0.105
+step 560, last loss 0.001, mean loss (700 steps) 0.108
+step 580, last loss 0.020, mean loss (700 steps) 0.104
+step 600, last loss 0.035, mean loss (700 steps) 0.105
+step 620, last loss 0.092, mean loss (700 steps) 0.103
+step 640, last loss 0.008, mean loss (700 steps) 0.102
+step 660, last loss 0.031, mean loss (700 steps) 0.102
+step 680, last loss 0.074, mean loss (700 steps) 0.100
+step 700, last loss 0.017, mean loss (700 steps) 0.099
+step 720, last loss 0.044, mean loss (700 steps) 0.097
+step 740, last loss 0.005, mean loss (700 steps) 0.095
+step 760, last loss 0.004, mean loss (700 steps) 0.094
+step 780, last loss 0.024, mean loss (700 steps) 0.096
+('total root predicted correctly = ', 1.0)
+('total node (including root) predicted correctly = ', 0.9679919490231988)
+('total_dev_loss = ', 149.33169169409666)
+('correct (root) = ', 68.0)
+('correct (all)= ', 70.04461926961925)
+('epoch = ', 22)
+step  20, last loss 0.140, mean loss (700 steps) 0.091
+step  40, last loss 0.192, mean loss (700 steps) 0.092
+step  60, last loss 0.000, mean loss (700 steps) 0.092
+step  80, last loss 0.035, mean loss (700 steps) 0.091
+step 100, last loss 0.018, mean loss (700 steps) 0.093
+step 120, last loss 0.022, mean loss (700 steps) 0.092
+step 140, last loss 0.267, mean loss (700 steps) 0.093
+step 160, last loss 0.039, mean loss (700 steps) 0.094
+step 180, last loss 0.003, mean loss (700 steps) 0.095
+step 200, last loss 0.002, mean loss (700 steps) 0.095
+step 220, last loss 0.082, mean loss (700 steps) 0.096
+step 240, last loss 0.129, mean loss (700 steps) 0.093
+step 260, last loss 0.017, mean loss (700 steps) 0.093
+step 280, last loss 0.631, mean loss (700 steps) 0.098
+step 300, last loss 0.079, mean loss (700 steps) 0.097
+step 320, last loss 0.004, mean loss (700 steps) 0.094
+step 340, last loss 0.058, mean loss (700 steps) 0.092
+step 360, last loss 0.001, mean loss (700 steps) 0.092
+step 380, last loss 0.002, mean loss (700 steps) 0.092
+step 400, last loss 0.024, mean loss (700 steps) 0.091
+step 420, last loss 0.026, mean loss (700 steps) 0.089
+step 440, last loss 0.001, mean loss (700 steps) 0.088
+step 460, last loss 0.051, mean loss (700 steps) 0.087
+step 480, last loss 0.126, mean loss (700 steps) 0.087
+step 500, last loss 0.062, mean loss (700 steps) 0.087
+step 520, last loss 0.385, mean loss (700 steps) 0.088
+step 540, last loss 0.006, mean loss (700 steps) 0.089
+step 560, last loss 0.006, mean loss (700 steps) 0.091
+step 580, last loss 0.001, mean loss (700 steps) 0.091
+step 600, last loss 0.425, mean loss (700 steps) 0.093
+step 620, last loss 0.020, mean loss (700 steps) 0.093
+step 640, last loss 0.001, mean loss (700 steps) 0.096
+step 660, last loss 0.039, mean loss (700 steps) 0.094
+step 680, last loss 0.006, mean loss (700 steps) 0.094
+step 700, last loss 0.032, mean loss (700 steps) 0.095
+step 720, last loss 0.001, mean loss (700 steps) 0.096
+step 740, last loss 0.157, mean loss (700 steps) 0.096
+step 760, last loss 0.008, mean loss (700 steps) 0.095
+step 780, last loss 0.113, mean loss (700 steps) 0.097
+('total root predicted correctly = ', 1.0)
+('total node (including root) predicted correctly = ', 0.9694503725441223)
+('total_dev_loss = ', 160.05337823263835)
+('correct (root) = ', 67.0)
+('correct (all)= ', 69.24908147408145)
+('epoch = ', 23)
+step  20, last loss 0.262, mean loss (700 steps) 0.096
+step  40, last loss 0.011, mean loss (700 steps) 0.098
+step  60, last loss 0.001, mean loss (700 steps) 0.096
+step  80, last loss 0.008, mean loss (700 steps) 0.099
+step 100, last loss 0.010, mean loss (700 steps) 0.100
+step 120, last loss 0.949, mean loss (700 steps) 0.101
+step 140, last loss 0.247, mean loss (700 steps) 0.101
+step 160, last loss 0.030, mean loss (700 steps) 0.100
+step 180, last loss 0.004, mean loss (700 steps) 0.097
+step 200, last loss 0.022, mean loss (700 steps) 0.098
+step 220, last loss 0.006, mean loss (700 steps) 0.098
+step 240, last loss 0.015, mean loss (700 steps) 0.099
+step 260, last loss 0.041, mean loss (700 steps) 0.099
+step 280, last loss 0.071, mean loss (700 steps) 0.099
+step 300, last loss 0.023, mean loss (700 steps) 0.099
+step 320, last loss 0.393, mean loss (700 steps) 0.100
+step 340, last loss 0.032, mean loss (700 steps) 0.101
+step 360, last loss 0.006, mean loss (700 steps) 0.101
+step 380, last loss 0.006, mean loss (700 steps) 0.102
+step 400, last loss 0.008, mean loss (700 steps) 0.102
+step 420, last loss 0.017, mean loss (700 steps) 0.101
+step 440, last loss 0.003, mean loss (700 steps) 0.099
+step 460, last loss 0.001, mean loss (700 steps) 0.098
+step 480, last loss 0.003, mean loss (700 steps) 0.100
+step 500, last loss 0.055, mean loss (700 steps) 0.098
+step 520, last loss 0.126, mean loss (700 steps) 0.098
+step 540, last loss 0.201, mean loss (700 steps) 0.095
+step 560, last loss 0.111, mean loss (700 steps) 0.095
+step 580, last loss 0.002, mean loss (700 steps) 0.094
+step 600, last loss 0.038, mean loss (700 steps) 0.096
+step 620, last loss 0.029, mean loss (700 steps) 0.096
+step 640, last loss 0.035, mean loss (700 steps) 0.096
+step 660, last loss 0.445, mean loss (700 steps) 0.097
+step 680, last loss 0.025, mean loss (700 steps) 0.096
+step 700, last loss 0.001, mean loss (700 steps) 0.095
+step 720, last loss 0.015, mean loss (700 steps) 0.094
+step 740, last loss 0.132, mean loss (700 steps) 0.091
+step 760, last loss 0.032, mean loss (700 steps) 0.092
+step 780, last loss 0.002, mean loss (700 steps) 0.088
+('total root predicted correctly = ', 0.99875)
+('total node (including root) predicted correctly = ', 0.969470168720169)
+('total_dev_loss = ', 160.13731971406378)
+('correct (root) = ', 66.0)
+('correct (all)= ', 69.69951437451437)
+('epoch = ', 24)
+step  20, last loss 0.185, mean loss (700 steps) 0.085
+step  40, last loss 0.007, mean loss (700 steps) 0.086
+step  60, last loss 0.202, mean loss (700 steps) 0.085
+step  80, last loss 0.061, mean loss (700 steps) 0.084
+step 100, last loss 0.022, mean loss (700 steps) 0.085
+step 120, last loss 0.001, mean loss (700 steps) 0.084
+step 140, last loss 0.128, mean loss (700 steps) 0.084
+step 160, last loss 0.436, mean loss (700 steps) 0.086
+step 180, last loss 0.043, mean loss (700 steps) 0.085
+step 200, last loss 0.827, mean loss (700 steps) 0.085
+step 220, last loss 0.002, mean loss (700 steps) 0.082
+step 240, last loss 0.005, mean loss (700 steps) 0.082
+step 260, last loss 0.021, mean loss (700 steps) 0.082
+step 280, last loss 0.007, mean loss (700 steps) 0.081
+step 300, last loss 0.016, mean loss (700 steps) 0.080
+step 320, last loss 0.029, mean loss (700 steps) 0.080
+step 340, last loss 0.040, mean loss (700 steps) 0.081
+step 360, last loss 0.035, mean loss (700 steps) 0.081
+step 380, last loss 0.041, mean loss (700 steps) 0.079
+step 400, last loss 0.014, mean loss (700 steps) 0.078
+step 420, last loss 0.047, mean loss (700 steps) 0.078
+step 440, last loss 0.020, mean loss (700 steps) 0.078
+step 460, last loss 0.060, mean loss (700 steps) 0.078
+step 480, last loss 0.065, mean loss (700 steps) 0.080
+step 500, last loss 0.152, mean loss (700 steps) 0.080
+step 520, last loss 0.035, mean loss (700 steps) 0.081
+step 540, last loss 0.036, mean loss (700 steps) 0.082
+step 560, last loss 0.063, mean loss (700 steps) 0.081
+step 580, last loss 0.273, mean loss (700 steps) 0.081
+step 600, last loss 0.028, mean loss (700 steps) 0.082
+step 620, last loss 0.061, mean loss (700 steps) 0.080
+step 640, last loss 0.091, mean loss (700 steps) 0.081
+step 660, last loss 0.002, mean loss (700 steps) 0.083
+step 680, last loss 0.004, mean loss (700 steps) 0.085
+step 700, last loss 0.236, mean loss (700 steps) 0.086
+step 720, last loss 0.001, mean loss (700 steps) 0.085
+step 740, last loss 0.005, mean loss (700 steps) 0.089
+step 760, last loss 0.083, mean loss (700 steps) 0.089
+step 780, last loss 0.440, mean loss (700 steps) 0.090
+('total root predicted correctly = ', 0.99875)
+('total node (including root) predicted correctly = ', 0.9716451777389276)
+('total_dev_loss = ', 163.61991031025536)
+('correct (root) = ', 66.0)
+('correct (all)= ', 69.2767621267621)
+('epoch = ', 25)
+step  20, last loss 0.033, mean loss (700 steps) 0.094
+step  40, last loss 0.007, mean loss (700 steps) 0.095
+step  60, last loss 0.010, mean loss (700 steps) 0.095
+step  80, last loss 0.039, mean loss (700 steps) 0.096
+step 100, last loss 0.076, mean loss (700 steps) 0.097
+step 120, last loss 0.000, mean loss (700 steps) 0.099
+step 140, last loss 0.053, mean loss (700 steps) 0.099
+step 160, last loss 0.000, mean loss (700 steps) 0.100
+step 180, last loss 0.138, mean loss (700 steps) 0.100
+step 200, last loss 0.005, mean loss (700 steps) 0.103
+step 220, last loss 0.020, mean loss (700 steps) 0.103
+step 240, last loss 0.055, mean loss (700 steps) 0.103
+step 260, last loss 0.024, mean loss (700 steps) 0.102
+step 280, last loss 0.001, mean loss (700 steps) 0.102
+step 300, last loss 0.001, mean loss (700 steps) 0.104
+step 320, last loss 0.024, mean loss (700 steps) 0.105
+step 340, last loss 0.039, mean loss (700 steps) 0.104
+step 360, last loss 0.012, mean loss (700 steps) 0.105
+step 380, last loss 0.018, mean loss (700 steps) 0.102
+step 400, last loss 0.060, mean loss (700 steps) 0.102
+step 420, last loss 0.008, mean loss (700 steps) 0.099
+step 440, last loss 0.009, mean loss (700 steps) 0.100
+step 460, last loss 0.019, mean loss (700 steps) 0.100
+step 480, last loss 0.015, mean loss (700 steps) 0.097
+step 500, last loss 0.002, mean loss (700 steps) 0.098
+step 520, last loss 0.007, mean loss (700 steps) 0.098
+step 540, last loss 0.040, mean loss (700 steps) 0.098
+step 560, last loss 0.118, mean loss (700 steps) 0.095
+step 580, last loss 0.010, mean loss (700 steps) 0.094
+step 600, last loss 0.042, mean loss (700 steps) 0.095
+step 620, last loss 0.011, mean loss (700 steps) 0.096
+step 640, last loss 0.002, mean loss (700 steps) 0.091
+step 660, last loss 0.066, mean loss (700 steps) 0.092
+step 680, last loss 0.001, mean loss (700 steps) 0.092
+step 700, last loss 0.001, mean loss (700 steps) 0.089
+step 720, last loss 0.005, mean loss (700 steps) 0.087
+step 740, last loss 0.002, mean loss (700 steps) 0.085
+step 760, last loss 0.005, mean loss (700 steps) 0.084
+step 780, last loss 0.606, mean loss (700 steps) 0.084
+('total root predicted correctly = ', 1.0)
+('total node (including root) predicted correctly = ', 0.9714473061660561)
+('total_dev_loss = ', 165.512945183611)
+('correct (root) = ', 68.0)
+('correct (all)= ', 69.84461926961924)
+('epoch = ', 26)
+step  20, last loss 0.007, mean loss (700 steps) 0.085
+step  40, last loss 0.027, mean loss (700 steps) 0.082
+step  60, last loss 0.013, mean loss (700 steps) 0.079
+step  80, last loss 0.007, mean loss (700 steps) 0.080
+step 100, last loss 0.036, mean loss (700 steps) 0.078
+step 120, last loss 0.087, mean loss (700 steps) 0.077
+step 140, last loss 0.034, mean loss (700 steps) 0.077
+step 160, last loss 0.002, mean loss (700 steps) 0.077
+step 180, last loss 0.020, mean loss (700 steps) 0.077
+step 200, last loss 0.622, mean loss (700 steps) 0.077
+step 220, last loss 0.061, mean loss (700 steps) 0.077
+step 240, last loss 0.018, mean loss (700 steps) 0.077
+step 260, last loss 0.001, mean loss (700 steps) 0.077
+step 280, last loss 0.131, mean loss (700 steps) 0.078
+step 300, last loss 0.193, mean loss (700 steps) 0.083
+step 320, last loss 0.033, mean loss (700 steps) 0.084
+step 340, last loss 0.061, mean loss (700 steps) 0.083
+step 360, last loss 0.038, mean loss (700 steps) 0.082
+step 380, last loss 0.000, mean loss (700 steps) 0.083
+step 400, last loss 0.022, mean loss (700 steps) 0.085
+step 420, last loss 0.007, mean loss (700 steps) 0.084
+step 440, last loss 0.130, mean loss (700 steps) 0.083
+step 460, last loss 0.002, mean loss (700 steps) 0.084
+step 480, last loss 0.021, mean loss (700 steps) 0.084
+step 500, last loss 0.002, mean loss (700 steps) 0.084
+step 520, last loss 0.002, mean loss (700 steps) 0.083
+step 540, last loss 0.113, mean loss (700 steps) 0.083
+step 560, last loss 0.010, mean loss (700 steps) 0.082
+step 580, last loss 0.023, mean loss (700 steps) 0.080
+step 600, last loss 0.032, mean loss (700 steps) 0.080
+step 620, last loss 0.824, mean loss (700 steps) 0.082
+step 640, last loss 0.000, mean loss (700 steps) 0.082
+step 660, last loss 0.297, mean loss (700 steps) 0.083
+step 680, last loss 0.084, mean loss (700 steps) 0.086
+step 700, last loss 0.207, mean loss (700 steps) 0.087
+step 720, last loss 0.045, mean loss (700 steps) 0.085
+step 740, last loss 0.017, mean loss (700 steps) 0.085
+step 760, last loss 0.178, mean loss (700 steps) 0.085
+step 780, last loss 0.001, mean loss (700 steps) 0.085
+('total root predicted correctly = ', 0.99875)
+('total node (including root) predicted correctly = ', 0.9721111770174273)
+('total_dev_loss = ', 170.5723139764741)
+('correct (root) = ', 66.0)
+('correct (all)= ', 69.18314740814738)
+('epoch = ', 27)
+step  20, last loss 0.019, mean loss (700 steps) 0.089
+step  40, last loss 0.010, mean loss (700 steps) 0.088
+step  60, last loss 0.004, mean loss (700 steps) 0.089
+step  80, last loss 0.035, mean loss (700 steps) 0.089
+step 100, last loss 0.169, mean loss (700 steps) 0.088
+step 120, last loss 0.004, mean loss (700 steps) 0.088
+step 140, last loss 0.011, mean loss (700 steps) 0.090
+step 160, last loss 0.010, mean loss (700 steps) 0.088
+step 180, last loss 0.002, mean loss (700 steps) 0.087
+step 200, last loss 0.111, mean loss (700 steps) 0.082
+step 220, last loss 0.110, mean loss (700 steps) 0.081
+step 240, last loss 0.001, mean loss (700 steps) 0.082
+step 260, last loss 0.189, mean loss (700 steps) 0.084
+step 280, last loss 0.003, mean loss (700 steps) 0.084
+step 300, last loss 0.039, mean loss (700 steps) 0.083
+step 320, last loss 0.009, mean loss (700 steps) 0.086
+step 340, last loss 0.093, mean loss (700 steps) 0.086
+step 360, last loss 0.178, mean loss (700 steps) 0.085
+step 380, last loss 0.005, mean loss (700 steps) 0.086
+step 400, last loss 0.622, mean loss (700 steps) 0.085
+step 420, last loss 0.802, mean loss (700 steps) 0.086
+step 440, last loss 0.378, mean loss (700 steps) 0.087
+step 460, last loss 0.010, mean loss (700 steps) 0.088
+step 480, last loss 0.003, mean loss (700 steps) 0.089
+step 500, last loss 0.092, mean loss (700 steps) 0.090
+step 520, last loss 0.004, mean loss (700 steps) 0.088
+step 540, last loss 0.004, mean loss (700 steps) 0.089
+step 560, last loss 0.004, mean loss (700 steps) 0.088
+step 580, last loss 0.014, mean loss (700 steps) 0.083
+step 600, last loss 0.238, mean loss (700 steps) 0.081
+step 620, last loss 0.024, mean loss (700 steps) 0.080
+step 640, last loss 0.045, mean loss (700 steps) 0.079
+step 660, last loss 0.045, mean loss (700 steps) 0.081
+step 680, last loss 0.000, mean loss (700 steps) 0.080
+step 700, last loss 0.006, mean loss (700 steps) 0.080
+step 720, last loss 0.208, mean loss (700 steps) 0.078
+step 740, last loss 0.048, mean loss (700 steps) 0.080
+step 760, last loss 0.463, mean loss (700 steps) 0.079
+step 780, last loss 0.036, mean loss (700 steps) 0.080
+('total root predicted correctly = ', 1.0)
+('total node (including root) predicted correctly = ', 0.9732439331501834)
+('total_dev_loss = ', 172.1777863384923)
+('correct (root) = ', 65.0)
+('correct (all)= ', 69.03198190698188)
+('epoch = ', 28)
+step  20, last loss 0.002, mean loss (700 steps) 0.081
+step  40, last loss 0.037, mean loss (700 steps) 0.082
+step  60, last loss 0.002, mean loss (700 steps) 0.083
+step  80, last loss 0.375, mean loss (700 steps) 0.084
+step 100, last loss 0.008, mean loss (700 steps) 0.083
+step 120, last loss 0.031, mean loss (700 steps) 0.084
+step 140, last loss 0.021, mean loss (700 steps) 0.085
+step 160, last loss 0.014, mean loss (700 steps) 0.086
+step 180, last loss 0.360, mean loss (700 steps) 0.086
+step 200, last loss 0.009, mean loss (700 steps) 0.086
+step 220, last loss 0.000, mean loss (700 steps) 0.082
+step 240, last loss 0.010, mean loss (700 steps) 0.083
+step 260, last loss 0.005, mean loss (700 steps) 0.083
+step 280, last loss 0.102, mean loss (700 steps) 0.084
+step 300, last loss 1.884, mean loss (700 steps) 0.085
+step 320, last loss 0.004, mean loss (700 steps) 0.084
+step 340, last loss 0.059, mean loss (700 steps) 0.084
+step 360, last loss 0.005, mean loss (700 steps) 0.083
+step 380, last loss 0.011, mean loss (700 steps) 0.086
+step 400, last loss 0.505, mean loss (700 steps) 0.087
+step 420, last loss 0.169, mean loss (700 steps) 0.087
+step 440, last loss 0.189, mean loss (700 steps) 0.088
+step 460, last loss 0.090, mean loss (700 steps) 0.089
+step 480, last loss 0.063, mean loss (700 steps) 0.089
+step 500, last loss 0.026, mean loss (700 steps) 0.089
+step 520, last loss 0.048, mean loss (700 steps) 0.091
+step 540, last loss 0.174, mean loss (700 steps) 0.092
+step 560, last loss 0.016, mean loss (700 steps) 0.092
+step 580, last loss 0.043, mean loss (700 steps) 0.093
+step 600, last loss 0.002, mean loss (700 steps) 0.091
+step 620, last loss 0.421, mean loss (700 steps) 0.090
+step 640, last loss 0.076, mean loss (700 steps) 0.088
+step 660, last loss 0.003, mean loss (700 steps) 0.088
+step 680, last loss 0.108, mean loss (700 steps) 0.088
+step 700, last loss 0.000, mean loss (700 steps) 0.086
+step 720, last loss 0.031, mean loss (700 steps) 0.089
+step 740, last loss 0.052, mean loss (700 steps) 0.086
+step 760, last loss 0.191, mean loss (700 steps) 0.085
+step 780, last loss 0.029, mean loss (700 steps) 0.084
+('total root predicted correctly = ', 0.99875)
+('total node (including root) predicted correctly = ', 0.9736989295426797)
+('total_dev_loss = ', 173.25649026437895)
+('correct (root) = ', 65.0)
+('correct (all)= ', 69.28585303585301)
+('epoch = ', 29)
+step  20, last loss 0.002, mean loss (700 steps) 0.082
+step  40, last loss 0.426, mean loss (700 steps) 0.081
+step  60, last loss 0.007, mean loss (700 steps) 0.079
+step  80, last loss 0.125, mean loss (700 steps) 0.078
+step 100, last loss 0.010, mean loss (700 steps) 0.076
+step 120, last loss 0.318, mean loss (700 steps) 0.079
+step 140, last loss 0.014, mean loss (700 steps) 0.079
+step 160, last loss 0.013, mean loss (700 steps) 0.079
+step 180, last loss 0.019, mean loss (700 steps) 0.079
+step 200, last loss 0.008, mean loss (700 steps) 0.076
+step 220, last loss 0.198, mean loss (700 steps) 0.076
+step 240, last loss 0.004, mean loss (700 steps) 0.075
+step 260, last loss 0.077, mean loss (700 steps) 0.077
+step 280, last loss 0.039, mean loss (700 steps) 0.074
+step 300, last loss 0.123, mean loss (700 steps) 0.073
+step 320, last loss 0.009, mean loss (700 steps) 0.072
+step 340, last loss 0.004, mean loss (700 steps) 0.073
+step 360, last loss 0.070, mean loss (700 steps) 0.073
+step 380, last loss 0.090, mean loss (700 steps) 0.072
+step 400, last loss 0.003, mean loss (700 steps) 0.075
+step 420, last loss 0.033, mean loss (700 steps) 0.073
+step 440, last loss 0.025, mean loss (700 steps) 0.072
+step 460, last loss 0.008, mean loss (700 steps) 0.070
+step 480, last loss 0.032, mean loss (700 steps) 0.069
+step 500, last loss 0.059, mean loss (700 steps) 0.071
+step 520, last loss 0.010, mean loss (700 steps) 0.074
+step 540, last loss 0.179, mean loss (700 steps) 0.077
+step 560, last loss 0.001, mean loss (700 steps) 0.076
+step 580, last loss 0.021, mean loss (700 steps) 0.074
+step 600, last loss 0.174, mean loss (700 steps) 0.075
+step 620, last loss 0.093, mean loss (700 steps) 0.073
+step 640, last loss 0.023, mean loss (700 steps) 0.076
+step 660, last loss 0.037, mean loss (700 steps) 0.076
+step 680, last loss 0.004, mean loss (700 steps) 0.078
+step 700, last loss 0.018, mean loss (700 steps) 0.078
+step 720, last loss 0.004, mean loss (700 steps) 0.078
+step 740, last loss 0.003, mean loss (700 steps) 0.080
+step 760, last loss 0.098, mean loss (700 steps) 0.080
+step 780, last loss 0.121, mean loss (700 steps) 0.082
+('total root predicted correctly = ', 1.0)
+('total node (including root) predicted correctly = ', 0.9749969995282496)
+('total_dev_loss = ', 178.14181020780234)
+('correct (root) = ', 67.0)
+('correct (all)= ', 69.26842879342875)
+DONE!

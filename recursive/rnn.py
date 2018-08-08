@@ -130,7 +130,9 @@ if __name__ == '__main__':
   data = raw_input('Please input dataset: acd or raw\n')
   print data
   assert data == 'acd' or data == 'raw'
-  train_data, dev_data, test_data = tr.simplified_data(train_size, 100, 200, data)
+  train_data, dev_data, test_data = tr.simplified_data(0, 0, 0, data)
+  print(len(train_data), len(dev_data), len(test_data))
+  print(train_data[0])
   vocab = Vocab()
   train_sents = [t.get_words() for t in train_data]
   vocab.construct(list(itertools.chain.from_iterable(train_sents)))
@@ -237,5 +239,32 @@ if __name__ == '__main__':
     print("total_dev_loss = ", total_dev_loss)
     print("correct (root) = ", dev_correct_at_root)
     print("correct (all)= ", dev_correct_all)
+
+    total_test_loss = 0.
+    test_correct_at_root = 0.
+    test_correct_all = 0.
+    for step, test_example in enumerate(test_data):
+      all_nodes = model(test_example)
+
+      labels  = []
+      indices = []
+      for x,y in enumerate(test_example.labels):
+        if y != 2:
+          labels.append(y)
+          indices.append(x)
+      torch_labels = torch.LongTensor([l for l in labels if l != 2]).cuda()
+      logits = all_nodes.index_select(dim=0, index=Variable(torch.LongTensor(indices)).cuda())
+      logits_squeezed = logits.squeeze(1)
+      predictions = logits.max(dim=2)[1].squeeze()
+
+      correct = predictions.data == torch_labels
+      #so correctly predicted (root);
+      test_correct_at_root += float(correct[-1])
+      test_correct_all += float(correct.sum()) / len(labels)
+      objective_loss = F.cross_entropy(input=logits_squeezed, target=Variable(torch_labels))
+      total_test_loss += objective_loss.data.item()
+    print("total_test_loss = ", total_test_loss)
+    print("correct (root) = ", test_correct_at_root)
+    print("correct (all)= ", test_correct_all)
   # logits = logits.index_select(dim=0, index=Variable(torch.LongTensor(indices)))
   print("DONE!")
