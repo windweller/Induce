@@ -17,6 +17,7 @@ class LSTM(nn.Module):
         self.attention = model_config.attention
         self.max_pool = model_config.max_pool
         self.batch_first = model_config.batch_first
+        self.label_size = model_config.label_size
 
         assert self.attention or self.max_pool, "Can only choose attention or max pooling"
 
@@ -29,7 +30,7 @@ class LSTM(nn.Module):
             bidirectional=model_config.bidir,
             batch_first=self.batch_first)  # ha...not even bidirectional
         d_out = model_config.hidden_size if not model_config.bidir else model_config.hidden_size * 2
-        self.out = nn.Linear(d_out, model_config.label_size)  # include bias, to prevent bias assignment
+        self.out = nn.Linear(d_out, self.label_size)  # include bias, to prevent bias assignment
 
         self.embed = nn.Embedding(len(vocab), model_config.emb_dim)
         self.embed.weight.data.copy_(vocab.vectors)

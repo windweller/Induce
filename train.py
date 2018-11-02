@@ -21,10 +21,12 @@ from sklearn import metrics
 # Check the TMPLA paper for reference
 # MultiLabel Normalization should work with any interpretation kernel
 # including additive decomposition, contextual decomposition, etc.
+# scores matrix: (B, T, d, L)
 class ScoreNormConfig(Config):
     def __init__(self,
-                 local_norm=True,  # along each vector (d dimension) (Murdoch's paper did this)
+                 local_norm=True,  # along each vector (L dimension) (Murdoch's paper did this) (a ratio between label)
                  global_norm=False,  # along all vectors (T dimension) (time dimension)
+                 sum_contrib=False, # add the (d dimension)
                  max_contrib=False,  # only pick the largest along d dimension for each T element
                  directional=False,  # compute directionl
                  **kwargs):
@@ -32,6 +34,7 @@ class ScoreNormConfig(Config):
         super(ScoreNormConfig, self).__init__(local_norm=local_norm,
                                               global_norm=global_norm,
                                               max_contrib=max_contrib,
+                                              sum_contrib=sum_contrib,
                                               directional=directional,
                                               **kwargs)
 
