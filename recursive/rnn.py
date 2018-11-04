@@ -63,7 +63,7 @@ class RNN_LSTM_Model(nn.Module):
     self.node_list = []
     self.h = torch.zeros(1, 1, self.embed_size).cuda()
     self.c = torch.zeros(1, 1, self.embed_size).cuda()
-  
+
     root_node = self.walk_tree(x.root)
     all_nodes = torch.cat(self.node_list)
     #now I need to project out
@@ -108,18 +108,28 @@ class RNN_Model(nn.Module):
     #now I need to project out
     return all_nodes
 
+import argparse
+parser = argparse.ArgumentParser(description='Recursive Tree training')
+parser.add_argument("--intermediate", action="store_true", help="train intermediate labels")
+parser.add_argument("--inter_alpha", type=float, default=0.1, help="adjust the penalty on intermediate labels")
+parser.add_argument("--corpus", type=str, default='raw', help="acd|raw")
+parser.add_argument("--mode", type=str, default='lstm', help="rnn|lstm")
+params, _ = parser.parse_known_args()
 
 if __name__ == '__main__':
-  data = raw_input('Please input dataset: acd or raw\n')
-  print data
-  assert data == 'acd' or data == 'raw'
+  data = params.corpus
+  print(data)
+  assert data == 'acd_trees_128d' or data == 'acd_trees_512d' or data == 'raw' or data == 'acd_trees_512d_rand'
   train_data, dev_data, test_data = tr.simplified_data(0, 0, 0, data)
   print(len(train_data), len(dev_data), len(test_data))
   print(train_data[0])
   vocab = Vocab()
   train_sents = [t.get_words() for t in train_data]
   vocab.construct(list(itertools.chain.from_iterable(train_sents)))
-  model = RNN_LSTM_Model(vocab, embed_size=embed_size).cuda()
+  if params.mode == 'lstm':
+    model = RNN_LSTM_Model(vocab, embed_size=embed_size).cuda()
+  else:
+    model = RNN_Model(vocab, embed_size=embed_size).cuda()
 
   loss_history = []
   optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9, dampening=0.0)
@@ -139,10 +149,14 @@ if __name__ == '__main__':
 
       labels  = []
       indices = []
-      for x, y in enumerate(tree.labels):
-        if y != 2:
-          labels.append(y)
-          indices.append(x)
+      if params.intermediate:
+        for x, y in enumerate(tree.labels):
+          if y != 2:
+            labels.append(y)
+            indices.append(x)
+      else:
+        labels.append(tree.labels[-1])
+        indices.append(len(tree.labels)-1)
 
       torch_labels = torch.LongTensor([l for l in labels if l != 2]).cuda()
       logits = all_nodes.index_select(dim=0, index=Variable(torch.LongTensor(indices)).cuda())

@@ -10,6 +10,7 @@ def get_sentences(path):
             sents.append(sent)
     return sents
 
+
 def get_trees(path):
     trees = []
     with open(path, 'r') as f:
@@ -18,8 +19,9 @@ def get_trees(path):
             trees.append(tree)
     return trees
 
+
 # cut down origin dataset
-def stage1(): 
+def stage1():
     for filename in ['trees/train.txt', 'trees/dev.txt', 'trees/test.txt']:
         trees = get_sentences(filename)
         with open(filename) as fin:
@@ -32,24 +34,24 @@ def stage1():
 
 # confirm each sentences are equal, do statistics
 # result: all the same
-def stage2():
+def stage2(acd_tree_path):
     for filename in ['train', 'dev', 'test']:
-        print filename
-        acd_trees = get_sentences('acd_trees/%s.txt' % (filename))
+        print(filename)
+        acd_trees = get_sentences('%s/%s.txt' % (acd_tree_path, filename))
         trees = get_sentences('trees/%s.filter.txt' % (filename))
         assert len(trees) == len(acd_trees)
         l = len(trees)
         for i in range(l):
             if ' '.join(trees[i]).lower() != ' '.join(acd_trees[i]):
-                print ' '.join(trees[i]).lower() + '\n' + ' '.join(acd_trees[i])
-                print len(' '.join(trees[i]).lower()), len('\n' + ' '.join(acd_trees[i]))
+                print(' '.join(trees[i]).lower() + '\n' + ' '.join(acd_trees[i]))
+                print(len(' '.join(trees[i]).lower()), len('\n' + ' '.join(acd_trees[i])))
 
 
 # check the differentce
-def stage3():
+def stage3(acd_tree_path):
     for filename in ['train', 'dev', 'test']:
-        print filename
-        acd_trees = get_trees('acd_trees/%s.normlabel.txt' % (filename))
+        print(filename)
+        acd_trees = get_trees('%s/%s.txt' % (acd_tree_path, filename))
         trees = get_trees('trees/%s.filter.txt' % (filename))
         l = len(trees)
         cnt, tot = 0, 0
@@ -65,15 +67,17 @@ def stage3():
             elif tree_label == 1 or tree_label == 2 or tree_label == 3:
                 pass
             else:
-                assert(0)
-        print cnt, tot
+                assert (0)
+        print(cnt, tot)
+
 
 # process data
-def stage4():
+# this processes data in a very particular way...
+def stage4(acd_tree_path):
     for filename in ['train', 'dev', 'test']:
-        with open('acd_trees/%s.txt' % (filename)) as fin:
+        with open('%s/%s.txt' % (acd_tree_path, filename)) as fin:
             fstd = open('trees/%s.filter.txt' % (filename))
-            fout = open('acd_trees/%s.normlabel.txt' % (filename), 'w')
+            fout = open('%s/%s.normlabel.txt' % (acd_tree_path, filename), 'w')
             for line in fin:
                 newline = ''
                 l = len(line)
@@ -83,7 +87,7 @@ def stage4():
                         newline += line[i]
                         j = i + 5 if line[i + 5] == ' ' else i + 6
                         label = float(line[i + 1: j])
-                        if label > 1.0: # <TODO> threshold
+                        if label > 1.0:  # <TODO> threshold
                             newline += '4'
                         elif label < -1.0:
                             newline += '0'
@@ -99,12 +103,9 @@ def stage4():
             fout.close()
             fstd.close()
 
+
 if __name__ == '__main__':
     # stage1()
     # stage2()
-    stage3()
-    # stage4()
-
-
-
-
+    # stage3('acd_trees_512d_rand')  # acd_trees_512d
+    stage4('acd_trees_512d_rand') # acd_trees_512d

@@ -119,19 +119,19 @@ def loadTrees(dataSet='train'):
 
     return trees
 
-def loadACDTrees(dataSet='train'):
+def loadACDTrees(data, dataSet='train'):
     """
     Loads training trees. Maps leaf node words to word ids.
     """
-    file = 'acd_trees/%s.normlabel.txt' % dataSet
+    file = '%s/%s.normlabel.txt' % (data, dataSet)
     print("Loading %s trees.." % dataSet)
     with open(file, 'r') as fid:
         trees = [Tree(l) for l in fid.readlines()]
     return trees
 
-def simplified_data(num_train, num_dev, num_test, data='acd'):
-    if data == 'acd':
-        train, dev, test = loadACDTrees('train'), loadACDTrees('dev'), loadACDTrees('test')
+def simplified_data(num_train, num_dev, num_test, data='acd_trees_128d'):
+    if 'acd' in data:
+        train, dev, test = loadACDTrees(data, 'train'), loadACDTrees(data, 'dev'), loadACDTrees(data, 'test')
     else:
         train, dev, test = loadTrees('train'), loadTrees('dev'), loadTrees('test')
 
