@@ -115,7 +115,7 @@ def loadTrees(dataSet='train'):
     file = 'trees/%s.filter.txt' % dataSet
     print("Loading %s trees.." % dataSet)
     with open(file, 'r') as fid:
-        trees = [Tree(l) for l in fid.readlines()]
+        trees = [Tree(l.lower()) for l in fid.readlines()]
 
     return trees
 
