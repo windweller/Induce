@@ -5,6 +5,7 @@
 │   ├── acd: acd core algorithm
 │   ├── processing: generate trees
 │   ├── reproduce_figs: reproduce figures in the acd paper
+│   ├── model: sst training scripts
 │   └── visualization: tools for visualization
 ├── data
 │   ├── acd_trees_128d: generated sst trees with trained 128d-model
@@ -17,6 +18,4 @@
 │   ├── nolabel: evaluate without annotated labels
 │   └── recursive: evaluate with recursive neural networks
 ├── formula: calculate formula of acd algorithms
-├── model
-    └── sst: sst training scripts
 ```
