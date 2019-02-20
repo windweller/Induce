@@ -7,17 +7,16 @@
 │   ├── reproduce_figs: reproduce figures in the acd paper
 │   └── visualization: tools for visualization
 ├── data
-│   ├── acd_trees_128d: generated 128d sst trees
-│   ├── acd_trees_512d: generated 512d sst trees
-│   ├── acd_trees_512d_rand: generated 512d sst trees with random model
+│   ├── acd_trees_128d: generated sst trees with trained 128d-model
+│   ├── acd_trees_512d: generated sst trees with trained 512d-model
+│   ├── acd_trees_512d_rand: generated sst trees with random 512d-model
 │   ├── gold_trees: gold sst trees
-│   └── process.py: normalize labels to evaluate
+│   └── process.py: normalize labels for evaluation
 ├── eval
 │   ├── label: evaluate with annotated labels
 │   ├── nolabel: evaluate without annotated labels
 │   └── recursive: evaluate with recursive neural networks
 ├── formula: calculate formula of acd algorithms
 ├── model
-│   ├── snli: snli training scripts / models (arthur4)
-│   └── sst: sst training scripts / models (arthur4)
+    └── sst: sst training scripts
 ```
